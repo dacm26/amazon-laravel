@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class= "container col-md-6 col-md-offset-3">
+  <div class= "container col-md-4 col-md-offset-4">
     <h2>All Roles</h2>
     <table class="table table-striped">
        <thead>
@@ -19,12 +19,10 @@
           <tr>
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
-            <td> {{ link_to_show_role($role)  }}</td>
-            <td> {{ link_to_edit_role($role)  }}</td>
-            <td>  {{ Form::open(array('route' => array('roles.destroy', $role->id), 'method' => 'delete')) }}
+            <td colspan="2"> {{ link_to_show_role($role)  }} || {{ link_to_edit_role($role)  }}  </td>
+            <td>{{ Form::open(array('route' => array('roles.destroy', $role->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
-                  {{ Form::close() }}
-            </td>
+                  {{ Form::close() }}</td>
           </tr>
 
        @endforeach

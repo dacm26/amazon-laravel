@@ -11,8 +11,10 @@
 |
 */
 Route::resource('roles', 'RolesController');
+Route::resource('employees', 'EmployeesController');
 Route::get('/', function()
 {
-
 	return View::make('hello');
 });
+
+

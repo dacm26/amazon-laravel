@@ -9,5 +9,10 @@ class Role extends BaseModel {
 
 	// Don't forget to fill this array
 	protected $fillable = ['name'];
-
+  
+  public function employees()
+  {
+    return $this->hasMany('Employee');
+  }
+  
 }
