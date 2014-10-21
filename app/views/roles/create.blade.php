@@ -1,19 +1,19 @@
 @extends('layouts.default')
 
 @section('content')
-    <h2>Create Role</h2>
+    <div class= "container col-md-4 col-md-offset-4">
 
+      <h2>Create Role</h2>
 
-    
-    {{ Form::open(array('route' => array('roles.store'), 'method' => 'post')) }}
-        <div>
-          {{ Form::label('name','Name: ') }}
-          {{ Form::text('name') }}
-        </div>
-          
-        
-        <div>
-           {{ Form::submit('Create Role') }}
-        </div>
-    {{ Form::close() }}
+      {{ Form::open(array('route' => array('roles.store'),'class'=>'form', 'method' => 'post')) }}
+          <div class="form-group">
+            {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('name',"",['class' => 'form-control']) }}
+          </div>
+                
+          <div class="container col-sm-4 col-sm-offset-4">
+             {{ Form::submit('Create Role',['class' => 'btn btn-default']) }}
+          </div>
+      {{ Form::close() }}
+    </div>
 @stop
