@@ -31,14 +31,13 @@ class RolesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Role::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Role::create($data);
+    $role = new Role(Input::all());
+    
+    if(! $role->save())
+    {
+      return Redirect::back()->withErrors($role->getErrors())->withInput();
+    }
+      
 
 		return Redirect::route('roles.index');
 	}
@@ -77,17 +76,12 @@ class RolesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$role = Role::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Role::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$role->update($data);
-
+		$role = Role::findOrFail($id);  
+    if(! $role->update(Input::all()))
+    {
+      return Redirect::back()->withErrors($role->getErrors())->withInput();
+    }
+    
 		return Redirect::route('roles.index');
 	}
 

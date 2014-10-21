@@ -10,6 +10,7 @@
         <div class="form-group">
           {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
           {{ Form::text('name', $role->name,['class' => 'form-control']) }}
+          {{ $errors->first('name') }}
         </div>
           
         

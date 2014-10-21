@@ -19,8 +19,8 @@
           <tr>
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
-            <td>{{ link_to_show_role($role)  }}</td>
-            <td>{{ link_to_edit_role($role)  }}</td>
+            <td> {{ link_to_show_role($role)  }}</td>
+            <td> {{ link_to_edit_role($role)  }}</td>
             <td>  {{ Form::open(array('route' => array('roles.destroy', $role->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}
