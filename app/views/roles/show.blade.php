@@ -1,0 +1,15 @@
+@extends('layouts.default')
+
+@section('content')
+<h2>Show Role</h2>
+
+<p>
+  <strong>Name:</strong>
+  {{ $role->name }}
+</p>
+
+{{ link_to_edit_role($role)  }}
+{{ link_to_route('roles.index','Back') }}
+
+
+@stop
