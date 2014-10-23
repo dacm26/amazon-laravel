@@ -14,10 +14,10 @@ class Employee extends BaseModel implements UserInterface, RemindableInterface {
   
 	// Add your validation rules here
 	public static $rules = [
-		 'name' => 'required',
-     'email' => 'required|email',
+		 'name' => 'required|Alpha',
+     'email' => 'required|email|Unique:employees',
      'birthday' => 'required',
-     'mobile' => 'required|min:8',
+     'mobile' => 'required|Integer|min:8|Unique:employees',
      'gender' => 'required',
      'password' => 'required|min:8',
      'role_id' => 'required'
