@@ -7,21 +7,29 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 
-class Employee extends BaseModel implements UserInterface, RemindableInterface {
+class Employee extends Eloquent implements UserInterface, RemindableInterface {
   
     use UserTrait, RemindableTrait;
 
   
 	// Add your validation rules here
 	public static $rules = [
-		 'name' => 'required|Alpha',
-     'email' => 'required|email|Unique:employees',
-     'birthday' => 'required',
-     'mobile' => 'required|Integer|min:8|Unique:employees',
-     'gender' => 'required',
-     'password' => 'required|min:8',
-     'role_id' => 'required'
-     
+    
+    'create' => [
+           'name' => 'required',
+           'email' => 'required|email|Unique:employees',
+           'birthday' => 'required',
+           'mobile' => 'required|Integer|Unique:employees',
+           'gender' => 'required',
+           'password' => 'required',
+           'role_id' => 'required' 
+        ],
+    'edit'   => [
+           'name' => 'required',
+           'birthday' => 'required',
+           'gender' => 'required',
+           'role_id' => 'required' 
+        ]
 	];
   
 
@@ -40,8 +48,11 @@ class Employee extends BaseModel implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
 	// Don't forget to fill this array
-	protected $guarded = ['id','password'];
+	protected $guarded = ['id'];
   
+  public function setPasswordAttribute($pass){
+      $this->attributes['password'] = Hash::make($pass);
+  }
   public function role()
   {
     return $this->belongsTo('Role');

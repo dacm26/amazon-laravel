@@ -10,7 +10,6 @@ class EmployeesController extends \BaseController {
 	public function index()
 	{
 		$employees = Employee::all();
-
 		return View::make('employees.index', compact('employees'));
 	}
 
@@ -21,7 +20,8 @@ class EmployeesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('employees.create');
+    $roles = Role::lists('name', 'id');
+		return View::make('employees.create', compact('roles'));
 	}
 
 	/**
@@ -31,14 +31,22 @@ class EmployeesController extends \BaseController {
 	 */
 	public function store()
 	{
+    $validator = Validator::make( Input::all(), Employee::$rules['create'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
     $employee = new Employee(Input::all());
-    
+    $employee->save();
+    return Redirect::route('employees.index');
+    /*
+    $employee = new Employee();
     if(! $employee->save())
     {
       return Redirect::back()->withErrors($employee->getErrors())->withInput();
     }
 
 		return Redirect::route('employees.index');
+    */
 	}
 
 	/**
@@ -50,7 +58,6 @@ class EmployeesController extends \BaseController {
 	public function show($id)
 	{
 		$employee = Employee::findOrFail($id);
-
 		return View::make('employees.show', compact('employee'));
 	}
 
@@ -63,8 +70,8 @@ class EmployeesController extends \BaseController {
 	public function edit($id)
 	{
 		$employee = Employee::find($id);
-
-		return View::make('employees.edit', compact('employee'));
+    $roles = Role::lists('name', 'id');
+		return View::make('employees.edit', compact('employee','roles'));
 	}
 
 	/**
@@ -75,13 +82,24 @@ class EmployeesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$employee = Employee::findOrFail($id);  
+    
+    $validator = Validator::make( $data= Input::all(), Employee::$rules['edit'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $employee = Employee::findOrFail($id);
+    $employee->update($data);
+    return Redirect::route('employees.index');
+    
+    
+    /*
+		$employee = Employee::findOrFail($id);
     if(! $employee->update(Input::all()))
     {
       return Redirect::back()->withErrors($employee->getErrors())->withInput();
     }
     
-		return Redirect::route('employees.index');
+		return Redirect::route('employees.index');*/
 	}
 
 	/**
