@@ -12,6 +12,7 @@
 */
 Route::resource('roles', 'RolesController');
 Route::resource('employees', 'EmployeesController');
+Route::resource('categories', 'CategoriesController');
 Route::get('/', function()
 {
 	return View::make('hello');

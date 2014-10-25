@@ -1,0 +1,1 @@
+/home/action/workspace/myapp/app/views/categories/show.blade.php
