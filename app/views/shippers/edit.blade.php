@@ -9,11 +9,13 @@
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('name',$shipper->name,['class' => 'form-control']) }}
+            {{ $errors->first('name') }}
           </div>
           
           <div class="form-group">
             {{ Form::label('porcentage','Porcentage: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::number('porcentage',$shipper->porcentage,['class' => 'form-control']) }}
+            {{ $errors->first('porcentage') }}
           </div>
 
 
