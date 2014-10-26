@@ -10,9 +10,6 @@
              <th>Id</th>
              <th>Name</th>
              <th>Email</th>
-             <th>Birthday</th>
-             <th>Mobile</th>
-             <th>Gender</th>
              <th>Role</th>
              <th></th>
              <th></th>
@@ -25,9 +22,6 @@
             <td>{{$employee->id}}</td>
             <td>{{$employee->name}}</td>
             <td>{{$employee->email}}</td>
-            <td>{{$employee->birthday}}</td>
-            <td>{{$employee->mobile}}</td>
-            <td>{{$employee->gender}}</td>
             <td>{{ (Role::find($employee->role_id)->name) }}</td>
             <td colspan="2"> {{ link_to_show_employee($employee)  }} || {{ link_to_edit_employee($employee)  }}  </td>
             <td>{{ Form::open(array('route' => array('employees.destroy', $employee->id), 'method' => 'delete')) }}

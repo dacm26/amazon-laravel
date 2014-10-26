@@ -32,9 +32,9 @@
       
       
           <div class="form-group">
-            {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::select('gender', array( 'M' => 'Male', 'F' => 'Female') ,['class' => 'form-control']) }}
-            {{ $errors->first('gender') }}
+            {{ Form::label('gender','Tax Free: ',['class' => 'exampleInputEmail1']) }}<br>
+            {{ Form::radio('gender','M ',['class' => 'exampleInputEmail1']) }} <label>Male</label><br>
+            {{ Form::radio('gender', 'F', true) }}<label> Female</label>
           </div>
 
           <div class="form-group">
