@@ -4,11 +4,13 @@ class Attribute extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		// 'title' => 'required'
+		 'name' => 'required',
+     'value' => 'required',
+     'category_id' => 'required'
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $guarded = ['id'];
   public function category()
   {
     return $this->belongsTo('Category');
