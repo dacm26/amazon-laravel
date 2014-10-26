@@ -41,3 +41,17 @@ function link_to_create_category(){
 }
 
 
+
+
+function link_to_show_shipper(Shipper $shipper){
+  return link_to_route('shippers.show','Show',[$shipper->id]);
+}
+
+function link_to_edit_shipper(Shipper $shipper){
+  return link_to_route('shippers.edit','Edit',[$shipper->id]);
+}
+
+function link_to_create_shipper(){
+  return link_to_route('shippers.create','Create an Shipper');
+}
+
