@@ -1,1 +1,28 @@
-/home/action/workspace/myapp/app/views/categories/edit.blade.php
+@extends('layouts.default')
+
+@section('content')
+    <div class= "container col-md-4 col-md-offset-4">
+
+      <h2>Edit Category</h2>
+
+      {{ Form::open(array('route' => array('categories.update', $category->id),'class'=>'form', 'method' => 'put')) }}
+          <div class="form-group">
+            {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('name',$category->name,['class' => 'form-control']) }}
+            {{ $errors->first('name') }}
+          </div>
+      
+          <div class="form-group">
+            {{ Form::label('description','Description: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::textarea ('description',$category->description,['class' => 'form-control']) }}
+            {{ $errors->first('description') }}
+          </div>
+                  
+
+          <div class="container col-sm-4 col-sm-offset-4">
+             {{ Form::submit('Edit Category',['class' => 'btn btn-default']) }}
+             {{ link_to_route('categories.index','Back') }}
+          </div>
+      {{ Form::close() }}
+    </div>
+@stop

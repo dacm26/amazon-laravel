@@ -28,3 +28,16 @@ function link_to_create_employee(){
 }
 
 
+function link_to_show_category(Category $category){
+  return link_to_route('categories.show','Show',[$category->id]);
+}
+
+function link_to_edit_category(Category $category){
+  return link_to_route('categories.edit','Edit',[$category->id]);
+}
+
+function link_to_create_category(){
+  return link_to_route('categories.create','Create a Category');
+}
+
+

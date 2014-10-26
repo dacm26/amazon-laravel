@@ -31,16 +31,34 @@ class CategoriesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Category::$rules);
+		$validator = Validator::make($data = Input::except('attribute_name_1','attribute_value_1','attribute_name_2','attribute_value_2','attribute_name_3','attribute_value_3'), Category::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
-		Category::create($data);
-
-		return Redirect::route('categories.index');
+    $category = new Category($data);
+    $category->save();
+    
+    $attribute_1= new Attribute;
+    $attribute_1->name=Input::get('attribute_name_1');
+    $attribute_1->value=Input::get('attribute_value_1');
+    $attribute_1->category_id=$category->id;
+    $attribute_1->save();
+    
+    $attribute_2= new Attribute;
+    $attribute_2->name=Input::get('attribute_name_2');
+    $attribute_2->value=Input::get('attribute_value_2');
+    $attribute_2->category_id=$category->id;
+    $attribute_2->save();
+    
+    $attribute_3= new Attribute;
+    $attribute_3->name=Input::get('attribute_name_3');
+    $attribute_3->value=Input::get('attribute_value_3');
+    $attribute_3->category_id=$category->id;
+    $attribute_3->save();
+    
+    return Redirect::route('categories.index');
 	}
 
 	/**
@@ -51,9 +69,10 @@ class CategoriesController extends \BaseController {
 	 */
 	public function show($id)
 	{
+    $attributes = Attribute::where('category_id', '=', $id)->get();
 		$category = Category::findOrFail($id);
 
-		return View::make('categories.show', compact('category'));
+		return View::make('categories.show', compact('category','attributes'));
 	}
 
 	/**
@@ -65,8 +84,8 @@ class CategoriesController extends \BaseController {
 	public function edit($id)
 	{
 		$category = Category::find($id);
-
-		return View::make('categories.edit', compact('category'));
+    $attributes = Attribute::where('category_id', '=', $id)->get();
+		return View::make('categories.edit', compact('category','attributes'));
 	}
 
 	/**
