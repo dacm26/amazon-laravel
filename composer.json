@@ -21,7 +21,8 @@
 	},
   
   "require-dev": {
-    "way/generators": "~2.0"
+    "way/generators": "~2.0",
+    "phpunit/phpunit": "3.7.*"
   },
 	"scripts": {
 		"post-install-cmd": [
