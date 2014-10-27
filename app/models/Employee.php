@@ -27,7 +27,6 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
     'edit'   => [
            'name' => 'required',
            'birthday' => 'required',
-           'gender' => 'required',
            'role_id' => 'required' 
         ]
 	];

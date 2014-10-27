@@ -21,11 +21,9 @@
           </div>
       
 
-      
-
           <div class="form-group">
             {{ Form::label('role_id','Role: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::select('role_id', $roles) }}
+            {{ Form::select('role_id', $roles,$employee->role_id) }}
             {{ $errors->first('role_id') }}
           </div>
           

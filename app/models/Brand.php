@@ -9,5 +9,11 @@ class Brand extends \Eloquent {
 
 	// Don't forget to fill this array
 	protected $guarded = ['id'];
+  
+  public function products()
+  {
+    return $this->hasMany('Product');
+  }
+  
 
 }

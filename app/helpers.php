@@ -68,3 +68,15 @@ function link_to_create_brand(){
   return link_to_route('brands.create','Create an Brand');
 }
 
+
+function link_to_show_product(Product $product){
+  return link_to_route('products.show','Show',[$product->id]);
+}
+
+function link_to_edit_product(Product $product){
+  return link_to_route('products.edit','Edit',[$product->id]);
+}
+
+function link_to_create_product(){
+  return link_to_route('products.create','Create an Product');
+}

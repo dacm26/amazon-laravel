@@ -24,4 +24,9 @@ class Category extends \Eloquent {
     return $this->hasMany('Attribute');
   }
   
+  public function products()
+  {
+    return $this->hasMany('Product');
+  }
+  
 }
