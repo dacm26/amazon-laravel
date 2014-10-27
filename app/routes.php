@@ -14,6 +14,7 @@ Route::resource('roles', 'RolesController');
 Route::resource('employees', 'EmployeesController');
 Route::resource('categories', 'CategoriesController');
 Route::resource('shippers', 'ShippersController');
+Route::resource('brands', 'BrandsController');
 Route::get('/', function()
 {
 	return View::make('hello');

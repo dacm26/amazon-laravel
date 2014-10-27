@@ -23,6 +23,7 @@ class EmployeesController extends \BaseController {
     $roles = Role::lists('name', 'id');
 		return View::make('employees.create', compact('roles'));
 	}
+  /** Llenar Combobox de la view
 
 	/**
 	 * Store a newly created employee in storage.
