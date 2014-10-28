@@ -55,3 +55,28 @@ function link_to_create_shipper(){
   return link_to_route('shippers.create','Create an Shipper');
 }
 
+
+function link_to_show_brand(Brand $brand){
+  return link_to_route('brands.show','Show',[$brand->id]);
+}
+
+function link_to_edit_brand(Brand $brand){
+  return link_to_route('brands.edit','Edit',[$brand->id]);
+}
+
+function link_to_create_brand(){
+  return link_to_route('brands.create','Create an Brand');
+}
+
+
+function link_to_show_product(Product $product){
+  return link_to_route('products.show','Show',[$product->id]);
+}
+
+function link_to_edit_product(Product $product){
+  return link_to_route('products.edit','Edit',[$product->id]);
+}
+
+function link_to_create_product(){
+  return link_to_route('products.create','Create an Product');
+}

@@ -31,7 +31,7 @@
 
 <p>
   <strong>Role:</strong>
-   {{ (Role::find($employee->role_id)->first()->name) }} 
+   {{ (Role::find($employee->role_id)->name) }} 
 </p>
   
   
