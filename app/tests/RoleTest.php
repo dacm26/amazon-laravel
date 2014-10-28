@@ -9,9 +9,17 @@ class RoleTest extends TestCase {
     $this->assertEquals($role->name,'testexample'); 
   }
   
-  public function testValidationEmptyName(){
+  public function testInputEmptyData(){
     $role = new Role();
    
     $this->assertEmpty($role->name);
   }
+  
+  public function testInputType(){
+    $role = new Role();
+     
+    $role->name = 'testexample';
+    
+    $this->assertInternalType('string',$role->name);
+  }   
 }

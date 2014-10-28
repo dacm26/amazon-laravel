@@ -21,4 +21,24 @@ class EmployeesTest extends TestCase {
     $this->assertNotEquals($employee->password,'asdf1234'); 
     $this->assertEquals($employee->role_id, 1); 
   }
+  
+  public function testEmptyInputData(){
+    $employee = new Employee();
+    
+    $employee->name = 'test example name';
+    $employee->email = 'email@dcjj.com';
+    $employee->birthday = '1990-01-01';
+    $employee->mobile = 22200000;
+    $employee->gender = 'F';
+    $employee->password = 'asdf1234';
+    $employee->role_id = 1;
+    
+    $this->assertNotEmpty($employee->name); 
+    $this->assertNotEmpty($employee->email); 
+    $this->assertNotEmpty($employee->birthday); 
+    $this->assertNotEmpty($employee->mobile); 
+    $this->assertNotEmpty($employee->gender); 
+    $this->assertNotEmpty($employee->password); 
+    $this->assertNotEmpty($employee->role_id); 
+  }
 }
