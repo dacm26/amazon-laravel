@@ -17,7 +17,12 @@
             {{ Form::textarea ('description',$category->description,['class' => 'form-control']) }}
             {{ $errors->first('description') }}
           </div>
-                  
+           
+          <div class="form-group">
+            {{ Form::label('code','Code: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('code',$category->code,['class' => 'form-control']) }}
+            {{ $errors->first('code') }}
+          </div>
 
           <div class="container col-sm-4 col-sm-offset-4">
              {{ Form::submit('Save',['class' => 'btn btn-default']) }}

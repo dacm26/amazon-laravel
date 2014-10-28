@@ -11,7 +11,17 @@
             {{ Form::text('name',$shipper->name,['class' => 'form-control']) }}
             {{ $errors->first('name') }}
           </div>
+          <div class="form-group">
+            {{ Form::label('mobile','Mobile: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('mobile',$shipper->mobile,['class' => 'form-control']) }}
+            {{ $errors->first('mobile') }}
+          </div>
           
+          <div class="form-group">
+            {{ Form::label('email','Email: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::email('email',$shipper->email,['class' => 'form-control']) }}
+            {{ $errors->first('email') }}
+          </div>
           <div class="form-group">
             {{ Form::label('porcentage','Porcentage: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('porcentage',$shipper->porcentage,['class' => 'form-control']) }}

@@ -11,7 +11,14 @@
             {{ Form::text('name',$employee->name,['class' => 'form-control']) }}
             {{ $errors->first('name') }}
           </div>
+            
       
+          <div class="form-group">
+            {{ Form::label('email','Email: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::email('email',$employee->email,['class' => 'form-control']) }}
+            {{ $errors->first('email') }}
+          </div>
+
 
 
           <div class="form-group">
@@ -19,8 +26,15 @@
             {{ Form::input('date', 'birthday', $employee->birthday, ['class' => 'form-control', 'placeholder' => 'Date']) }}
             {{ $errors->first('birthday') }}
           </div>
-      
+          
+           <div class="form-group">
+            {{ Form::label('mobile','Mobile: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('mobile',$employee->mobile,['class' => 'form-control']) }}
+            {{ $errors->first('mobile') }}
+          </div>
+          
 
+      
           <div class="form-group">
             {{ Form::label('role_id','Role: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::select('role_id', $roles,$employee->role_id) }}

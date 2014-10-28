@@ -32,7 +32,7 @@ class ShippersController extends \BaseController {
 	public function store()
 	{
 		$validator = Validator::make($data = Input::all(), Shipper::$rules['create']);
-
+    
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();

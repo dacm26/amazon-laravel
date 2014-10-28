@@ -14,6 +14,7 @@ class Product extends \Eloquent {
 		 'edit'   => [
         'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
         'price' => 'required|regex:/^\+?[0-9]{1,3}\.[0-9]{2}/',
+        'code' => 'required|regex:/^([\w]+)$/',
         'units_in_stock' => 'required|regex:/^\+?[\d]+/',
         'threshold' => 'required|regex:/^\+?[\d]+/'
         ],

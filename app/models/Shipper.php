@@ -15,7 +15,9 @@ class Shipper extends \Eloquent {
         ],
     'edit'   => [
            'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
-           'porcentage' => 'required|regex:/^\+?[0-9]{1,2}\.[0-9]{2}/'
+           'email' => 'required|email',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
+           'porcentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
         ],       
       'destroy'   => [
 

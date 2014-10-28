@@ -11,6 +11,11 @@
             {{ Form::text('name',$product->name,['class' => 'form-control']) }}
             {{ $errors->first('name') }}
           </div>
+          <div class="form-group">
+            {{ Form::label('code','Code: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('code',$product->code,['class' => 'form-control']) }}
+            {{ $errors->first('code') }}
+          </div>
           
           <div class="form-group">
             {{ Form::label('price','Price: ',['class' => 'exampleInputEmail1']) }}
