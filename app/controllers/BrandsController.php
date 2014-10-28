@@ -32,7 +32,7 @@ class BrandsController extends \BaseController {
 	public function store()
 	{
 		$validator = Validator::make($data = Input::all(), Brand::$rules);
-
+    
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
@@ -78,9 +78,9 @@ class BrandsController extends \BaseController {
 	public function update($id)
 	{
 		$brand = Brand::findOrFail($id);
-
+    
 		$validator = Validator::make($data = Input::all(), Brand::$rules);
-
+    
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();

@@ -4,7 +4,7 @@ class Role extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [
-		 'name' => 'required'
+		 'name' => 'required|unique:roles'
 	];
 
 	// Don't forget to fill this array
