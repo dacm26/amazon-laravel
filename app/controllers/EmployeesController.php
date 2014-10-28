@@ -9,7 +9,7 @@ class EmployeesController extends \BaseController {
 	 */
 	public function index()
 	{
-    $roles = Role::lists('name', 'id');
+    $roles = Role::where('inactive','=','false')->get()->lists('name','id');
 		$employees = Employee::all();
 		return View::make('employees.index', compact('employees','roles'));
 	}

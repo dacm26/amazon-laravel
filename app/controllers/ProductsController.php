@@ -35,8 +35,9 @@ class ProductsController extends \BaseController {
 	public function store()
 	{
 		$validator = Validator::make($data = Input::all(), Product::$rules['create']);
-
-		if ($validator->fails())
+    $units = Input::get('units_in_stock');
+    $thresh = Input::get('threshold');
+		if ($validator->fails() or $thresh > $units or $thresh==0 or $units ==0)
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
@@ -85,8 +86,9 @@ class ProductsController extends \BaseController {
 		$product = Product::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), Product::$rules['edit']);
-
-		if ($validator->fails())
+    $units = Input::get('units_in_stock');
+    $thresh = Input::get('threshold');
+		if ($validator->fails() or $thresh > $units or $thresh==0 or $units ==0)
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
