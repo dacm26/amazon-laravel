@@ -25,6 +25,18 @@ class EmployeesTest extends TestCase {
   public function testEmptyInputData(){
     $employee = new Employee();
     
+    $this->assertEmpty($employee->name); 
+    $this->assertEmpty($employee->email); 
+    $this->assertEmpty($employee->birthday); 
+    $this->assertEmpty($employee->mobile); 
+    $this->assertEmpty($employee->gender); 
+    $this->assertEmpty($employee->password); 
+    $this->assertEmpty($employee->role_id); 
+  }
+  
+  public function testInputType(){
+    $employee = new Employee();
+    
     $employee->name = 'test example name';
     $employee->email = 'email@dcjj.com';
     $employee->birthday = '1990-01-01';
@@ -33,12 +45,12 @@ class EmployeesTest extends TestCase {
     $employee->password = 'asdf1234';
     $employee->role_id = 1;
     
-    $this->assertNotEmpty($employee->name); 
-    $this->assertNotEmpty($employee->email); 
-    $this->assertNotEmpty($employee->birthday); 
-    $this->assertNotEmpty($employee->mobile); 
-    $this->assertNotEmpty($employee->gender); 
-    $this->assertNotEmpty($employee->password); 
-    $this->assertNotEmpty($employee->role_id); 
+    $this->assertInternalType('string',$employee->name);
+    $this->assertInternalType('string',$employee->email);
+    $this->assertInternalType('string',$employee->birthday);
+    $this->assertInternalType('int',$employee->mobile);
+    $this->assertInternalType('string',$employee->gender);
+    $this->assertInternalType('string',$employee->password);
+    $this->assertInternalType('int',$employee->role_id);
   }
 }
