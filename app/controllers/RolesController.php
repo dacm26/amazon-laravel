@@ -31,12 +31,14 @@ class RolesController extends \BaseController {
 	 */
 	public function store()
 	{
-    $role = new Role(Input::all());
-    
-    if(! $role->save())
-    {
-      return Redirect::back()->withErrors($role->getErrors())->withInput();
-    }
+		$validator = Validator::make($data = Input::all(), Role::$rules['create/edit']);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		Role::create($data);
       
 
 		return Redirect::route('roles.index');
@@ -76,11 +78,12 @@ class RolesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$role = Role::findOrFail($id);  
-    if(! $role->update(Input::all()))
-    {
-      return Redirect::back()->withErrors($role->getErrors())->withInput();
+    $validator = Validator::make( $data= Input::all(), Role::$rules['create/edit'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
     }
+    $role = Role::findOrFail($id);
+    $role->update($data);
     
 		return Redirect::route('roles.index');
 	}
@@ -93,8 +96,13 @@ class RolesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Role::destroy($id);
-
+    $validator = Validator::make( $data= Input::all(), Role::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $role=Role::find($id);
+    $role->inactive=true;
+    $role->save();
 		return Redirect::route('roles.index');
 	}
 

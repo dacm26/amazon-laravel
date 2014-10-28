@@ -16,23 +16,33 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = [
     
     'create' => [
-           'name' => 'required',
+           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
            'email' => 'required|email|Unique:employees',
            'birthday' => 'required',
-           'mobile' => 'required|Integer|Unique:employees',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}/|Unique:employees',
            'gender' => 'required',
            'password' => 'required',
            'role_id' => 'required' 
         ],
     'edit'   => [
-           'name' => 'required',
+           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
            'birthday' => 'required',
-           'gender' => 'required',
            'role_id' => 'required' 
+        ],
+        'destroy'   => [
+
         ]
 	];
   
+  protected $defaults = array(
+     'inactive' => false,
+  );
 
+  public function __construct(array $attributes = array())
+  {
+      $this->setRawAttributes($this->defaults, true);
+      parent::__construct($attributes);
+  }
 	/**
 	 * The database table used by the model.
 	 *

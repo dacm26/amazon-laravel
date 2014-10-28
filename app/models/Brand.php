@@ -1,9 +1,8 @@
 <?php
 
-class Role extends \Eloquent {
+class Brand extends \Eloquent {
 
 	// Add your validation rules here
-  	// Add your validation rules here
 	public static $rules = [
     'create/edit' => [
            'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/|unique:roles',
@@ -22,11 +21,12 @@ class Role extends \Eloquent {
       parent::__construct($attributes);
   }
 	// Don't forget to fill this array
-	protected $fillable = ['name'];
+	protected $guarded = ['id'];
   
-  public function employees()
+  public function products()
   {
-    return $this->hasMany('Employee');
+    return $this->hasMany('Product');
   }
   
+
 }

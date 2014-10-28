@@ -2,7 +2,7 @@
 
 @section('content')
     <div class= "container col-md-4 col-md-offset-4">
-
+  @if (count($roles) >= 1)
       <h2>Create Employee</h2>
 
       {{ Form::open(array('route' => array('employees.store'),'class'=>'form', 'method' => 'post')) }}
@@ -32,7 +32,7 @@
       
       
           <div class="form-group">
-            {{ Form::label('gender','Tax Free: ',['class' => 'exampleInputEmail1']) }}<br>
+            {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
             {{ Form::radio('gender','M ',['class' => 'exampleInputEmail1']) }} <label>Male</label><br>
             {{ Form::radio('gender', 'F', true) }}<label> Female</label>
           </div>
@@ -55,5 +55,9 @@
              {{ link_to_route('employees.index','Back') }}
           </div>
       {{ Form::close() }}
-    </div>
+      
+    @else
+          <h1>You need to have roles, to create employees!!</h1>
+    @endif
+</div>
 @stop

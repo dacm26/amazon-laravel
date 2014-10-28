@@ -31,7 +31,7 @@ class ShippersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Shipper::$rules);
+		$validator = Validator::make($data = Input::all(), Shipper::$rules['create']);
 
 		if ($validator->fails())
 		{
@@ -79,7 +79,7 @@ class ShippersController extends \BaseController {
 	{
 		$shipper = Shipper::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Shipper::$rules);
+		$validator = Validator::make($data = Input::all(), Shipper::$rules['edit']);
 
 		if ($validator->fails())
 		{
@@ -99,7 +99,13 @@ class ShippersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Shipper::destroy($id);
+	  $validator = Validator::make( $data= Input::all(), Shipper::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $shipper=Shipper::find($id);
+    $shipper->inactive=true;
+    $shipper->save();
 
 		return Redirect::route('shippers.index');
 	}
