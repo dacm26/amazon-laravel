@@ -16,6 +16,7 @@
        </thead>
       <tbody>
        @foreach($roles as $role)
+        @if (!($role->inactive))
           <tr>
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
@@ -24,7 +25,7 @@
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
           </tr>
-
+        @endif
        @endforeach
        </tbody>
     </table>

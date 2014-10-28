@@ -17,6 +17,7 @@
        </thead>
       <tbody>
        @foreach($categories as $category)
+         @if (!($category->inactive))
           <tr>
             <td>{{$category->id}}</td>
             <td>{{$category->name}}</td>
@@ -26,7 +27,7 @@
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
           </tr>
-
+        @endif
        @endforeach
        </tbody>
     </table>

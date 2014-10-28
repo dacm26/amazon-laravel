@@ -10,8 +10,9 @@ class ProductsController extends \BaseController {
 	public function index()
 	{
 		$products = Product::all();
-
-		return View::make('products.index', compact('products'));
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
+		return View::make('products.index', compact('products','categories','brands'));
 	}
 
 	/**
@@ -21,8 +22,8 @@ class ProductsController extends \BaseController {
 	 */
 	public function create()
 	{
-    $categories = Category::lists('name', 'id');
-    $brands = Brand::lists('name', 'id');
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('products.create', compact('categories','brands'));
 	}
 
@@ -33,7 +34,7 @@ class ProductsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Product::$rules);
+		$validator = Validator::make($data = Input::all(), Product::$rules['create']);
 
 		if ($validator->fails())
 		{
@@ -54,8 +55,9 @@ class ProductsController extends \BaseController {
 	public function show($id)
 	{
 		$product = Product::findOrFail($id);
-
-		return View::make('products.show', compact('product'));
+    $categories = Category::lists('name', 'id');
+    $brands = Brand::lists('name', 'id');
+		return View::make('products.show', compact('product','categories','brands'));
 	}
 
 	/**
@@ -67,8 +69,8 @@ class ProductsController extends \BaseController {
 	public function edit($id)
 	{
 		$product = Product::find($id);
-    $categories = Category::lists('name', 'id');
-    $brands = Brand::lists('name', 'id');
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('products.edit', compact('product','categories','brands'));
 	}
 
@@ -82,7 +84,7 @@ class ProductsController extends \BaseController {
 	{
 		$product = Product::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Product::$rules);
+		$validator = Validator::make($data = Input::all(), Product::$rules['edit']);
 
 		if ($validator->fails())
 		{
@@ -102,7 +104,14 @@ class ProductsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Product::destroy($id);
+	  $validator = Validator::make( $data= Input::all(), Product::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $product=Product::find($id);
+    $product->inactive=true;
+    $product->save();
+
 
 		return Redirect::route('products.index');
 	}

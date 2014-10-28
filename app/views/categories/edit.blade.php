@@ -2,7 +2,7 @@
 
 @section('content')
     <div class= "container col-md-4 col-md-offset-4">
-
+     @if (!($category->inactive))
       <h2>Edit Category</h2>
 
       {{ Form::open(array('route' => array('categories.update', $category->id),'class'=>'form', 'method' => 'put')) }}
@@ -20,9 +20,12 @@
                   
 
           <div class="container col-sm-4 col-sm-offset-4">
-             {{ Form::submit('Edit Category',['class' => 'btn btn-default']) }}
+             {{ Form::submit('Save',['class' => 'btn btn-default']) }}
              {{ link_to_route('categories.index','Back') }}
           </div>
       {{ Form::close() }}
-    </div>
+      @else
+      <h1>This category is inactive!!</h1>
+    @endif
+  </div>
 @stop

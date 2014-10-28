@@ -19,6 +19,7 @@
        </thead>
       <tbody>
        @foreach($shippers as $shipper)
+         @if (!($shipper->inactive))
           <tr>
             <td>{{$shipper->id}}</td>
             <td>{{$shipper->name}}</td>
@@ -30,7 +31,7 @@
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
           </tr>
-
+          @endif
        @endforeach
        </tbody>
     </table>

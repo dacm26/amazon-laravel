@@ -31,7 +31,7 @@ class BrandsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Brand::$rules);
+		$validator = Validator::make($data = Input::all(), Brand::$rules['create/edit']);
     
 		if ($validator->fails())
 		{
@@ -79,7 +79,7 @@ class BrandsController extends \BaseController {
 	{
 		$brand = Brand::findOrFail($id);
     
-		$validator = Validator::make($data = Input::all(), Brand::$rules);
+		$validator = Validator::make($data = Input::all(), Brand::$rules['create/edit']);
     
 		if ($validator->fails())
 		{
@@ -99,7 +99,13 @@ class BrandsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Brand::destroy($id);
+    $validator = Validator::make( $data= Input::all(), Brand::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $brand=Brand::find($id);
+    $brand->inactive=true;
+    $brand->save();
 
 		return Redirect::route('brands.index');
 	}

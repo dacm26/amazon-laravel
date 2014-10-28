@@ -2,7 +2,7 @@
 
 @section('content')
     <div class= "container col-md-4 col-md-offset-4">
-
+  @if (count($brands) >= 1 and count($categories) >= 1 and !($product->inactive)) 
       <h2>Edit Product</h2>
 
       {{ Form::open(array('route' => array('products.update', $product->id),'class'=>'form', 'method' => 'put')) }}
@@ -44,9 +44,18 @@
           </div>
                 
           <div class="container col-sm-4 col-sm-offset-4">
-             {{ Form::submit('Edit Product',['class' => 'btn btn-default']) }}
+             {{ Form::submit('Save',['class' => 'btn btn-default']) }}
              {{ link_to_route('products.index','Back') }}
           </div>
       {{ Form::close() }}
+     @else
+        @if ($product->inactive)
+          <h1>The product is inactive!!</h1>
+        @endif
+        @if (!(count($brands) >= 1 and count($categories) >= 1 ))
+          <h1>You need to have brands and categories, to create products!!</h1>
+        @endif
+          
+    @endif
     </div>
 @stop

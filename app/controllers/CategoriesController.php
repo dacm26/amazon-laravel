@@ -138,7 +138,14 @@ class CategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Category::destroy($id);
+	  $validator = Validator::make( $data= Input::all(), Category::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $category=Category::find($id);
+    $category->inactive=true;
+    $category->save();
+
 
 		return Redirect::route('categories.index');
 	}

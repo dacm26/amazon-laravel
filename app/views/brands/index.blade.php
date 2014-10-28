@@ -16,6 +16,7 @@
        </thead>
       <tbody>
        @foreach($brands as $brand)
+        @if (!($brand->inactive))
           <tr>
             <td>{{$brand->id}}</td>
             <td>{{$brand->name}}</td>
@@ -24,7 +25,7 @@
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
           </tr>
-
+        @endif
        @endforeach
        </tbody>
     </table>

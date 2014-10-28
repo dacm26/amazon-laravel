@@ -21,7 +21,7 @@
 
 <p>
   <strong>Porcentage:</strong>
-  {{ $shipper->porcentage }}
+  {{ $shipper->porcentage }} %
 </p>
 
 {{ link_to_edit_shipper($shipper)  }}

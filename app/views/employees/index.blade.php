@@ -2,7 +2,8 @@
 
 @section('content')
 
-  <div class= "container col-md-4 col-md-offset-4">
+<div class= "container col-md-4 col-md-offset-4">
+  @if (count($roles) >= 1)
     <h2>All Employees</h2>
     <table class="table table-striped">
        <thead>
@@ -18,6 +19,7 @@
        </thead>
       <tbody>
        @foreach($employees as $employee)
+        @if (!($employee->inactive))
           <tr>
             <td>{{$employee->id}}</td>
             <td>{{$employee->name}}</td>
@@ -28,10 +30,13 @@
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
           </tr>
-
+        @endif
        @endforeach
        </tbody>
     </table>
     <p>{{ link_to_create_employee()  }}</p>
+  @else
+      <h1>You need to have roles, to create employees!!</h1>
+  @endif
 </div>
 @stop

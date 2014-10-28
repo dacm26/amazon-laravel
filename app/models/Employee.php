@@ -28,10 +28,21 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
            'name' => 'required',
            'birthday' => 'required',
            'role_id' => 'required' 
+        ],
+        'destroy'   => [
+
         ]
 	];
   
+  protected $defaults = array(
+     'inactive' => false,
+  );
 
+  public function __construct(array $attributes = array())
+  {
+      $this->setRawAttributes($this->defaults, true);
+      parent::__construct($attributes);
+  }
 	/**
 	 * The database table used by the model.
 	 *

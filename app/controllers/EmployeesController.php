@@ -9,8 +9,9 @@ class EmployeesController extends \BaseController {
 	 */
 	public function index()
 	{
+    $roles = Role::lists('name', 'id');
 		$employees = Employee::all();
-		return View::make('employees.index', compact('employees'));
+		return View::make('employees.index', compact('employees','roles'));
 	}
 
 	/**
@@ -20,7 +21,7 @@ class EmployeesController extends \BaseController {
 	 */
 	public function create()
 	{
-    $roles = Role::lists('name', 'id');
+    $roles = Role::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('employees.create', compact('roles'));
 	}
   /** Llenar Combobox de la view
@@ -58,8 +59,9 @@ class EmployeesController extends \BaseController {
 	 */
 	public function show($id)
 	{
+    $roles = Role::lists('name', 'id');
 		$employee = Employee::findOrFail($id);
-		return View::make('employees.show', compact('employee'));
+		return View::make('employees.show', compact('employee','roles'));
 	}
 
 	/**
@@ -71,7 +73,7 @@ class EmployeesController extends \BaseController {
 	public function edit($id)
 	{
 		$employee = Employee::find($id);
-    $roles = Role::lists('name', 'id');
+    $roles = Role::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('employees.edit', compact('employee','roles'));
 	}
 
@@ -111,7 +113,13 @@ class EmployeesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Employee::destroy($id);
+	  $validator = Validator::make( $data= Input::all(), Employee::$rules['destroy'] ); 
+    if ( $validator->fails() ) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
+    $employee=Employee::find($id);
+    $employee->inactive=true;
+    $employee->save();
 
 		return Redirect::route('employees.index');
 	}

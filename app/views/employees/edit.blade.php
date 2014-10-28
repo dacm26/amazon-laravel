@@ -2,7 +2,7 @@
 
 @section('content')
     <div class= "container col-md-4 col-md-offset-4">
-
+  @if (count($roles) >= 1 and  (!($employee->inactive)))
       <h2>Edit Employee</h2>
 
       {{ Form::open(array('route' => array('employees.update', $employee->id),'class'=>'form', 'method' => 'put')) }}
@@ -29,9 +29,17 @@
           
                 
           <div class="container col-sm-4 col-sm-offset-4">
-             {{ Form::submit('Edit Employee',['class' => 'btn btn-default']) }}
+             {{ Form::submit('Save',['class' => 'btn btn-default']) }}
              {{ link_to_route('employees.index','Back') }}
           </div>
       {{ Form::close() }}
+    @else
+      @if (($employee->inactive))
+          <h1>This employee is inactive!!</h1>
+      @endif
+      @if (count($roles) == 0)
+          <h1>You need to have roles, to edit employees!!</h1>
+      @endif
+    @endif
     </div>
 @stop

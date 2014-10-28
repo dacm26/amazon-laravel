@@ -2,6 +2,7 @@
 
 @section('content')
   <div class= "container col-md-4 col-md-offset-4">
+    @if (!($brand->inactive))
     <h2>Edit Brand</h2>
 
 
@@ -15,9 +16,12 @@
           
         
         <div class="container col-sm-4 col-sm-offset-4">
-           {{ Form::submit('Edit Brand',['class' => 'btn btn-default']) }}
+           {{ Form::submit('Save',['class' => 'btn btn-default']) }}
            {{ link_to_route('brands.index','Back') }}
         </div>
     {{ Form::close() }}
+    @else
+      <h1>This brand is inactive!!</h1>
+    @endif
 </div>
 @stop
