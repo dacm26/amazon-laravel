@@ -31,7 +31,7 @@ class BrandsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Brand::$rules['create/edit']);
+		$validator = Validator::make($data = Input::all(), Brand::$rules['create']);
     
 		if ($validator->fails())
 		{
@@ -41,6 +41,7 @@ class BrandsController extends \BaseController {
 		Brand::create($data);
 
 		return Redirect::route('brands.index');
+
 	}
 
 	/**
@@ -67,6 +68,7 @@ class BrandsController extends \BaseController {
 		$brand = Brand::find($id);
 
 		return View::make('brands.edit', compact('brand'));
+    
 	}
 
 	/**
@@ -77,9 +79,10 @@ class BrandsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+    try{
 		$brand = Brand::findOrFail($id);
     
-		$validator = Validator::make($data = Input::all(), Brand::$rules['create/edit']);
+		$validator = Validator::make($data = Input::all(), Brand::$rules['edit']);
     
 		if ($validator->fails())
 		{
@@ -89,6 +92,10 @@ class BrandsController extends \BaseController {
 		$brand->update($data);
 
 		return Redirect::route('brands.index');
+        }
+    catch(Exception $e){
+      return Redirect::back()->withErrors($validator)->withInput();
+    }
 	}
 
 	/**

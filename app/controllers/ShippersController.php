@@ -41,6 +41,7 @@ class ShippersController extends \BaseController {
 		Shipper::create($data);
 
 		return Redirect::route('shippers.index');
+
 	}
 
 	/**
@@ -77,6 +78,7 @@ class ShippersController extends \BaseController {
 	 */
 	public function update($id)
 	{
+    try{
 		$shipper = Shipper::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), Shipper::$rules['edit']);
@@ -89,6 +91,10 @@ class ShippersController extends \BaseController {
 		$shipper->update($data);
 
 		return Redirect::route('shippers.index');
+        }
+    catch(Exception $e){
+      return Redirect::back()->withErrors($validator)->withInput();
+    }
 	}
 
 	/**

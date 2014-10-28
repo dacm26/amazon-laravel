@@ -85,7 +85,7 @@ class EmployeesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-    
+    try{
     $validator = Validator::make( $data= Input::all(), Employee::$rules['edit'] ); 
     if ( $validator->fails() ) { 
         return Redirect::back()->withErrors($validator)->withInput();
@@ -94,7 +94,10 @@ class EmployeesController extends \BaseController {
     $employee->update($data);
     return Redirect::route('employees.index');
     
-    
+        }
+    catch(Exception $e){
+      return Redirect::back()->withErrors($validator)->withInput();
+    }
     /*
 		$employee = Employee::findOrFail($id);
     if(! $employee->update(Input::all()))

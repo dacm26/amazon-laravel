@@ -83,6 +83,7 @@ class ProductsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+    try{
 		$product = Product::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), Product::$rules['edit']);
@@ -96,6 +97,10 @@ class ProductsController extends \BaseController {
 		$product->update($data);
 
 		return Redirect::route('products.index');
+        }
+    catch(Exception $e){
+      return Redirect::back()->withErrors($validator)->withInput();
+    }
 	}
 
 	/**

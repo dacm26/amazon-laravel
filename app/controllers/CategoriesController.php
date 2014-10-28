@@ -79,6 +79,8 @@ class CategoriesController extends \BaseController {
 
     
     return Redirect::route('categories.index');
+    
+
 	}
 
 	/**
@@ -106,6 +108,7 @@ class CategoriesController extends \BaseController {
 		$category = Category::find($id);
     $attributes = Attribute::where('category_id', '=', $id)->get();
 		return View::make('categories.edit', compact('category','attributes'));
+    
 	}
 
 	/**
@@ -116,6 +119,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
+    try{
 		$category = Category::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), Category::$rules['edit']);
@@ -128,6 +132,10 @@ class CategoriesController extends \BaseController {
 		$category->update($data);
 
 		return Redirect::route('categories.index');
+        }
+    catch(Exception $e){
+      return Redirect::back()->withErrors($validator)->withInput();
+    }
 	}
 
 	/**

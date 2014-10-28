@@ -5,9 +5,9 @@ class Product extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
      'create'   => [
-        'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
+        'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/|Unique:products',
         'price' => 'required|regex:/^\+?[0-9]{1,3}\.[0-9]{2}/',
-        'code' => 'required|regex:/^([\w]+)$/|Unique:categories',
+        'code' => 'required|regex:/^([\w]+)$/|Unique:products',
         'units_in_stock' => 'required|regex:/^\+?[\d]+/',
         'threshold' => 'required|regex:/^\+?[\d]+/'
         ],

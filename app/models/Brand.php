@@ -4,8 +4,12 @@ class Brand extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-    'create/edit' => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/|unique:roles',
+    'create' => [
+           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/|Unique:brands',
+        ],
+    
+   'edit'   => [
+       'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
         ],
     'destroy'   => [
 

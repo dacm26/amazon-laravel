@@ -5,7 +5,7 @@ class Category extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
 		    'create' => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
+           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/|Unique:categories',
            'description' => 'required',
            'code' => 'required|regex:/^([\w]+)/|Unique:categories',
            'tax_free' => 'required' 
