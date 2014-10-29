@@ -39,7 +39,7 @@ class AddingActiveInactiveColumnsToTables extends Migration {
     
     Schema::table('shippers', function($table)
     {
-      $table->boolean('inactive')->after('porcentage');
+      $table->boolean('inactive')->after('percentage');
     }); 
  
 	}

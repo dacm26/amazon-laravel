@@ -23,9 +23,9 @@
             {{ $errors->first('email') }}
           </div>
           <div class="form-group">
-            {{ Form::label('porcentage','Porcentage: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::text('porcentage',$shipper->porcentage,['class' => 'form-control']) }}
-            {{ $errors->first('porcentage') }}
+            {{ Form::label('percentage','Percentage: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('percentage',$shipper->percentage,['class' => 'form-control']) }}
+            {{ $errors->first('percentage') }}
           </div>
 
 

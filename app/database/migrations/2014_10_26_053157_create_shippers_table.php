@@ -18,7 +18,7 @@ class CreateShippersTable extends Migration {
 			$table->string('name');
 			$table->bigInteger('mobile')->unique();
 			$table->string('email')->unique();
-			$table->double('porcentage');
+			$table->double('percentage');
 			$table->timestamps();
 		});
 	}

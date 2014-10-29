@@ -11,7 +11,7 @@
              <th>Name</th>
              <th>Mobile</th>
              <th>Email</th>
-             <th>Porcentage</th>
+             <th>Percentage</th>
              <th></th>
              <th></th>
              <th></th>
@@ -25,7 +25,7 @@
             <td>{{$shipper->name}}</td>
             <td>{{$shipper->mobile}}</td>
             <td>{{$shipper->email}}</td>
-            <td>{{$shipper->porcentage}}</td>
+            <td>{{$shipper->percentage}}</td>
             <td colspan="2"> {{ link_to_show_shipper($shipper)  }} || {{ link_to_edit_shipper($shipper)  }}  </td>
             <td>{{ Form::open(array('route' => array('shippers.destroy', $shipper->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}

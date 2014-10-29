@@ -25,9 +25,9 @@
           </div>
           
           <div class="form-group">
-            {{ Form::label('porcentage','Porcentage: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::text('porcentage',"",['class' => 'form-control']) }}
-            {{ $errors->first('porcentage') }}
+            {{ Form::label('percentage','Percentage: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('percentage',"",['class' => 'form-control']) }}
+            {{ $errors->first('percentage') }}
           </div>
         
           <div class="container col-sm-4 col-sm-offset-4">

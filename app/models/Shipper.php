@@ -10,14 +10,14 @@ class Shipper extends \Eloquent {
            'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
            'email' => 'required|email|Unique:shippers',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:shippers',
-           'porcentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
+           'percentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
       
         ],
     'edit'   => [
            'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
            'email' => 'required|email',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
-           'porcentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
+           'percentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
         ],       
       'destroy'   => [
 
