@@ -97,6 +97,17 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i>   Customers<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::route('customers.index') }}">List Customers</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('customers.create') }}">Create Customers</a>
+                                </li>
+                            </ul>
+                        </li>                      
+                        <li>
                             <a href="tables.html"><i class="glyphicon glyphicon-th-large"></i>   Products<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

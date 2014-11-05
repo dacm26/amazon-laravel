@@ -81,3 +81,15 @@ function link_to_edit_product(Product $product){
 function link_to_create_product(){
   return link_to_route('products.create','Create an Product');
 }
+
+function link_to_show_customer(Customer $customer){
+  return link_to_route('customers.show','Show',[$customer->id]);
+}
+
+function link_to_edit_customer(Customer $customer){
+  return link_to_route('customers.edit','Edit',[$customer->id]);
+}
+
+function link_to_create_customer(){
+  return link_to_route('customers.create','Create an Customer');
+}

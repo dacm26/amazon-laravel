@@ -16,6 +16,7 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('shippers', 'ShippersController');
 Route::resource('brands', 'BrandsController');
 Route::resource('products', 'ProductsController');
+Route::resource('customers', 'CustomersController');
 Route::get('/', 'RolesController@index');
 
 
