@@ -1,9 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
-<div class= "container col-md-6 col-md-offset-3">
-<h2>Show Shipper</h2>
-
+<h1 class="page-header">Show Shipper</h1>
+<br>
 <p>
   <strong>Name:</strong>
   {{ $shipper->name }}
@@ -27,4 +26,4 @@
 {{ link_to_edit_shipper($shipper)  }}
 {{ link_to_route('shippers.index','Back') }}
 
-</div>
+@stop

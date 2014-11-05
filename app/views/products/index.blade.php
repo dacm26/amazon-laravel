@@ -2,10 +2,13 @@
 
 @section('content')
 
-  <div class= "container col-md-4 col-md-offset-4">
   @if (count($brands) >= 1 and count($categories) >= 1)
-    <h2>All Products</h2>
-    <table class="table table-striped">
+    <h1 class="page-header">All Products</h1>
+    <br>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-hover">
        <thead>
            <tr>
              <th>Id</th>
@@ -21,7 +24,8 @@
           <tr>
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
-            <td colspan="2"> {{ link_to_show_product($product)  }} || {{ link_to_edit_product($product)  }}  </td>
+            <td><button class="btn btn-default">{{ link_to_show_product($product)  }} </button></td>
+            <td><button  class="btn btn-default">{{ link_to_edit_product($product)  }}</button></td>
             <td>{{ Form::open(array('route' => array('products.destroy', $product->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
@@ -30,10 +34,10 @@
        @endforeach
        </tbody>
     </table>
-    <p>{{ link_to_create_product()  }}</p>
-    
+                                  </div>
+        </div>
+      </div>     
      @else
           <h1>You need to have brands and categories, to create products!!</h1>
     @endif
-</div>
 @stop

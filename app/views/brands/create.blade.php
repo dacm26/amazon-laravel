@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
-
-      <h2>Create Brand</h2>
-
+      
+      <h1 class="page-header">Create Brand</h1>
+      <br>
       {{ Form::open(array('route' => array('brands.store'),'class'=>'form', 'method' => 'post')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -17,5 +16,4 @@
              {{ link_to_route('brands.index','Back') }}
           </div>
       {{ Form::close() }}
-    </div>
 @stop

@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
 
-      <h2>Create Shipper</h2>
-
+      <h1 class="page-header">Create Shipper</h1>
+      <br>
       {{ Form::open(array('route' => array('shippers.store'),'class'=>'form', 'method' => 'post')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -36,5 +35,4 @@
           </div>
       
       {{ Form::close() }}
-    </div>
 @stop

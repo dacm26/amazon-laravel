@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
   @if (count($roles) >= 1)
-      <h2>Create Employee</h2>
-
+      <h1 class="page-header">Create Employee</h1>
+       <br>
       {{ Form::open(array('route' => array('employees.store'),'class'=>'form', 'method' => 'post')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -59,5 +58,4 @@
     @else
           <h1>You need to have roles, to create employees!!</h1>
     @endif
-</div>
 @stop

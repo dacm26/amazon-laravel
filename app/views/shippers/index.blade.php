@@ -2,16 +2,16 @@
 
 @section('content')
 
-  <div class= "container col-md-4 col-md-offset-4">
-    <h2>All Shippers</h2>
-    <table class="table table-striped">
+    <h1 class="page-header">All Shippers</h1>
+    <br>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-hover">
        <thead>
            <tr>
              <th>Id</th>
              <th>Name</th>
-             <th>Mobile</th>
-             <th>Email</th>
-             <th>Percentage</th>
              <th></th>
              <th></th>
              <th></th>
@@ -23,10 +23,8 @@
           <tr>
             <td>{{$shipper->id}}</td>
             <td>{{$shipper->name}}</td>
-            <td>{{$shipper->mobile}}</td>
-            <td>{{$shipper->email}}</td>
-            <td>{{$shipper->percentage}}</td>
-            <td colspan="2"> {{ link_to_show_shipper($shipper)  }} || {{ link_to_edit_shipper($shipper)  }}  </td>
+            <td><button class="btn btn-default">{{ link_to_show_shipper($shipper)  }} </button></td>
+            <td><button  class="btn btn-default">{{ link_to_edit_shipper($shipper)  }}</button></td>
             <td>{{ Form::open(array('route' => array('shippers.destroy', $shipper->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
@@ -35,6 +33,7 @@
        @endforeach
        </tbody>
     </table>
-    <p>{{ link_to_create_shipper()  }}</p>
-</div>
-@stop
+                                  </div>
+        </div>
+      </div>  
+    @stop

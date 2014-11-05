@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
      @if (!($category->inactive))
-      <h2>Edit Category</h2>
-
+      <h1 class="page-header">Edit Category</h1>
+      <br>
       {{ Form::open(array('route' => array('categories.update', $category->id),'class'=>'form', 'method' => 'put')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -32,5 +31,4 @@
       @else
       <h1>This category is inactive!!</h1>
     @endif
-  </div>
 @stop

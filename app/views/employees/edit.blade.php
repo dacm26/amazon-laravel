@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
   @if (count($roles) >= 1 and  (!($employee->inactive)))
-      <h2>Edit Employee</h2>
-
+      <h1 class="page-header">Edit Employee</h1>
+      <br>
       {{ Form::open(array('route' => array('employees.update', $employee->id),'class'=>'form', 'method' => 'put')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -55,5 +54,4 @@
           <h1>You need to have roles, to edit employees!!</h1>
       @endif
     @endif
-    </div>
 @stop

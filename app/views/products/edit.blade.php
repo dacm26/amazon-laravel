@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
   @if (count($brands) >= 1 and count($categories) >= 1 and !($product->inactive)) 
-      <h2>Edit Product</h2>
-
+      <h1 class="page-header">Edit Product</h1>
+      <br>
       {{ Form::open(array('route' => array('products.update', $product->id),'class'=>'form', 'method' => 'put')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -62,5 +61,4 @@
         @endif
           
     @endif
-    </div>
 @stop

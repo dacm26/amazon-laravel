@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-<div class= "container col-md-6 col-md-offset-3">
     @if (count($brands) >= 1 and count($categories) >= 1)
-<h2>Show Product</h2>
-
+<h1 class="page-header">Show Product</h1>
+<br>
 <p>
   <strong>Name:</strong>
   {{ $product->name }}
@@ -46,4 +45,4 @@
      @else
           <h1>You need to have brands and categories, to create products!!</h1>
     @endif
-</div>
+@stop

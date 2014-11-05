@@ -1,9 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-<div class= "container col-md-6 col-md-offset-3">
-<h2>Show Category</h2>
 
+<h1 class="page-header">Show Category</h1>
+<br>
 <p>
   <strong>Name:</strong>
   {{ $category->name }}
@@ -43,5 +43,5 @@
 {{ link_to_edit_category($category)  }}
 {{ link_to_route('categories.index','Back') }}
 
-</div>
+
 @stop

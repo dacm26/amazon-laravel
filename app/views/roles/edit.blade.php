@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-  <div class= "container col-md-4 col-md-offset-4">
     @if (!($role->inactive))
-    <h2>Edit Role</h2>
-
+    <h1 class="page-header">Edit Role</h1>
+    <br>
 
     
     {{ Form::open(array('route' => array('roles.update', $role->id),'class'=>'form', 'method' => 'put')) }}
@@ -23,5 +22,4 @@
     @else
       <h1>This role is inactive!!</h1>
     @endif
-</div>
 @stop

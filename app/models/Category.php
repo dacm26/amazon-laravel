@@ -12,7 +12,8 @@ class Category extends \Eloquent {
         ],
         'edit'   => [
            'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
-           'description' => 'required'
+           'description' => 'required',
+           'code' => 'required|regex:/^([\w]+)/'
         ],
         'destroy'   => [
 

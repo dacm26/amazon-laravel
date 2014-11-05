@@ -2,9 +2,12 @@
 
 @section('content')
 
-  <div class= "container col-md-4 col-md-offset-4">
-    <h2>All Categories</h2>
-    <table class="table table-striped">
+    <h1 class="page-header">All Categories</h1>
+    <br>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-hover">
        <thead>
            <tr>
              <th>Id</th>
@@ -22,7 +25,8 @@
             <td>{{$category->id}}</td>
             <td>{{$category->name}}</td>
             <td>{{$category->code}}</td>
-            <td colspan="2"> {{ link_to_show_category($category)  }} || {{ link_to_edit_category($category)  }}  </td>
+            <td><button class="btn btn-default">{{ link_to_show_category($category)  }} </button></td>
+            <td><button  class="btn btn-default">{{ link_to_edit_category($category)  }}</button></td>
             <td>{{ Form::open(array('route' => array('categories.destroy', $category->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
@@ -31,6 +35,7 @@
        @endforeach
        </tbody>
     </table>
-    <p>{{ link_to_create_category()  }}</p>
-</div>
+                                  </div>
+        </div>
+      </div> 
 @stop

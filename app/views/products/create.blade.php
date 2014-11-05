@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-<div class= "container col-md-4 col-md-offset-4">
   @if (count($brands) >= 1 and count($categories) >= 1)
-      <h2>Create Product</h2>
-
+      <h1 class="page-header">Create Product</h1>
+      <br>
       {{ Form::open(array('route' => array('products.store'),'class'=>'form', 'method' => 'post')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -58,5 +57,4 @@
           <h1>You need to have brands and categories, to create products!!</h1>
     @endif
   
-    </div>
 @stop

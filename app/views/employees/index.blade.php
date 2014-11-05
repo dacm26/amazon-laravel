@@ -2,10 +2,13 @@
 
 @section('content')
 
-<div class= "container col-md-4 col-md-offset-4">
   @if (count($roles) >= 1)
-    <h2>All Employees</h2>
-    <table class="table table-striped">
+    <h1 class="page-header">All Employees</h1>
+    <br>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-hover">
        <thead>
            <tr>
              <th>Id</th>
@@ -25,7 +28,8 @@
             <td>{{$employee->name}}</td>
             <td>{{$employee->email}}</td>
             <td>{{ (Role::find($employee->role_id)->name) }}</td>
-            <td colspan="2"> {{ link_to_show_employee($employee)  }} || {{ link_to_edit_employee($employee)  }}  </td>
+            <td><button class="btn btn-default">{{ link_to_show_employee($employee)  }} </button></td>
+            <td><button  class="btn btn-default">{{ link_to_edit_employee($employee)  }}</button></td>
             <td>{{ Form::open(array('route' => array('employees.destroy', $employee->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
@@ -34,9 +38,10 @@
        @endforeach
        </tbody>
     </table>
-    <p>{{ link_to_create_employee()  }}</p>
   @else
       <h1>You need to have roles, to create employees!!</h1>
   @endif
-</div>
+                                  </div>
+        </div>
+      </div> 
 @stop

@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-  <div class= "container col-md-4 col-md-offset-4">
     @if (!($brand->inactive))
-    <h2>Edit Brand</h2>
-
+    <h1 class="page-header">Edit Brand</h1>
+    <br>
 
     
     {{ Form::open(array('route' => array('brands.update', $brand->id),'class'=>'form', 'method' => 'put')) }}
@@ -23,5 +22,4 @@
     @else
       <h1>This brand is inactive!!</h1>
     @endif
-</div>
 @stop

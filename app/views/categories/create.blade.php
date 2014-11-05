@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class= "container col-md-4 col-md-offset-4">
 
-      <h2>Create Category</h2>
-
+      <h1 class="page-header">Create Category</h1>
+      <br>
       {{ Form::open(array('route' => array('categories.store'),'class'=>'form', 'method' => 'post')) }}
           <div class="form-group">
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
@@ -62,5 +61,4 @@
              {{ link_to_route('categories.index','Back') }}
           </div>
       {{ Form::close() }}
-    </div>
 @stop

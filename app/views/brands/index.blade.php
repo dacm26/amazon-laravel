@@ -2,9 +2,12 @@
 
 @section('content')
 
-  <div class= "container col-md-4 col-md-offset-4">
-    <h2>All Brands</h2>
-    <table class="table table-striped">
+    <h1 class="page-header">All Brands</h1>
+    <br>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-hover">
        <thead>
            <tr>
              <th>Id</th>
@@ -20,7 +23,8 @@
           <tr>
             <td>{{$brand->id}}</td>
             <td>{{$brand->name}}</td>
-            <td colspan="2"> {{ link_to_show_brand($brand)  }} || {{ link_to_edit_brand($brand)  }}  </td>
+             <td><button class="btn btn-default">{{ link_to_show_brand($brand)  }}</button></td>
+            <td><button  class="btn btn-default">{{ link_to_edit_brand($brand)  }}</button></td>
             <td>{{ Form::open(array('route' => array('brands.destroy', $brand->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
@@ -29,6 +33,7 @@
        @endforeach
        </tbody>
     </table>
-    <p>{{ link_to_create_brand()  }}</p>
-</div>
+                      </div>
+        </div>
+      </div> 
 @stop
