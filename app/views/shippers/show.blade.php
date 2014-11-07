@@ -22,7 +22,15 @@
   <strong>Percentage:</strong>
   {{ $shipper->percentage }} %
 </p>
+<p>
+  <strong>Created At:</strong>
+  {{ $shipper->created_at }}
+</p>
 
+<p>
+  <strong>Updated At:</strong>
+  {{ $shipper->updated_at }}
+</p>
 {{ link_to_edit_shipper($shipper)  }}
 {{ link_to_route('shippers.index','Back') }}
 

@@ -38,7 +38,16 @@
   {{ Category::find($product->category_id)->name }}
 </p>
 
+<p>
+  <strong>Created At:</strong>
+  {{ $product->created_at }}
+</p>
 
+<p>
+  <strong>Updated At:</strong>
+  {{ $product->updated_at }}
+</p>   
+  
 
 {{ link_to_edit_product($product)  }}
 {{ link_to_route('products.index','Back') }}

@@ -34,7 +34,15 @@
    {{ (Role::find($employee->role_id)->name) }} 
 </p>
   
-  
+<p>
+  <strong>Created At:</strong>
+  {{ $employee->created_at }}
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  {{ $employee->updated_at }}
+</p>   
   
 
 {{ link_to_edit_employee($employee)  }}

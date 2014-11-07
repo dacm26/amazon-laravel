@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class CustomersController extends \BaseController {
 
 	/**
@@ -31,8 +31,13 @@ class CustomersController extends \BaseController {
 	 */
 	public function store()
 	{
-    $validator = Validator::make( Input::all(), Customer::$rules['create'] ); 
-    if ( $validator->fails() ) { 
+    $validator = Validator::make( Input::all(), Customer::$rules['create'] );
+    $birthday=new Carbon(Input::get('birthday'));
+    $today= Carbon::now();
+    $birthday=$birthday->year;
+    $today=$today->year;
+    $result=$today-$birthday;
+    if ( $validator->fails() or $result<18) { 
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $customer = new Customer(Input::all());
@@ -76,7 +81,12 @@ class CustomersController extends \BaseController {
 	{
     try{
     $validator = Validator::make( $data= Input::all(), Customer::$rules['edit'] ); 
-    if ( $validator->fails() ) { 
+    $birthday=new Carbon(Input::get('birthday'));
+    $today= Carbon::now();
+    $birthday=$birthday->year;
+    $today=$today->year;
+    $result=$today-$birthday;
+    if ( $validator->fails() or $result<18) { 
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $customer = Customer::findOrFail($id);

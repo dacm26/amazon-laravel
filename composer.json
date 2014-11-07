@@ -24,6 +24,10 @@
     "way/generators": "~2.0",
     "phpunit/phpunit": "3.7.*"
   },
+  "require": {
+        "nesbot/Carbon": "*"
+   },
+  
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",

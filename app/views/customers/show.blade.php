@@ -38,7 +38,15 @@
   {{ $customer->gender }}
 </p>
 
+<p>
+  <strong>Created At:</strong>
+  {{ $customer->created_at }}
+</p>
 
+<p>
+  <strong>Updated At:</strong>
+  {{ $customer->updated_at }}
+</p> 
   
   
 

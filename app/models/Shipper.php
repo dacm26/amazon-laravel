@@ -7,14 +7,14 @@ class Shipper extends \Eloquent {
 		public static $rules = [
     
     'create' => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*$/',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email|Unique:shippers',
            'mobile' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|Unique:shippers',
            'percentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'
       
         ],
     'edit'   => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*$/',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email',
            'mobile' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'percentage' => 'required|regex:/^[0-9]{1,2}\.[0-9]{2}/'

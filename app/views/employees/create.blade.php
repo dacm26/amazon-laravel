@@ -13,7 +13,7 @@
       
           <div class="form-group">
             {{ Form::label('email','Email: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::email('email',"",['class' => 'form-control']) }}
+            {{ Form::email('email',"",array('placeholder'=>'example@test.com','class' => 'form-control')) }}
             {{ $errors->first('email') }}
           </div>
 
@@ -25,7 +25,7 @@
       
            <div class="form-group">
             {{ Form::label('mobile','Mobile: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::text('mobile',"",['class' => 'form-control']) }}
+            {{ Form::text('mobile',"",array('placeholder'=>'3145896','class' => 'form-control')) }}
             {{ $errors->first('mobile') }}
           </div>
       
@@ -38,7 +38,7 @@
 
           <div class="form-group">
             {{ Form::label('password','Password: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::password('password',"",['class' => 'form-control']) }}
+            {{ Form::password('password',['class' => 'form-control']) }}
             {{ $errors->first('password') }}
           </div>
 

@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class EmployeesController extends \BaseController {
 
 	/**
@@ -34,7 +34,12 @@ class EmployeesController extends \BaseController {
 	public function store()
 	{
     $validator = Validator::make( Input::all(), Employee::$rules['create'] ); 
-    if ( $validator->fails() ) { 
+    $birthday=new Carbon(Input::get('birthday'));
+    $today= Carbon::now();
+    $birthday=$birthday->year;
+    $today=$today->year;
+    $result=$today-$birthday;
+    if ( $validator->fails() or $result<18) { 
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $employee = new Employee(Input::all());
@@ -87,7 +92,12 @@ class EmployeesController extends \BaseController {
 	{
     try{
     $validator = Validator::make( $data= Input::all(), Employee::$rules['edit'] ); 
-    if ( $validator->fails() ) { 
+    $birthday=new Carbon(Input::get('birthday'));
+    $today= Carbon::now();
+    $birthday=$birthday->year;
+    $today=$today->year;
+    $result=$today-$birthday;
+    if ( $validator->fails() or $result<18) { 
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $employee = Employee::findOrFail($id);

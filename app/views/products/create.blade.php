@@ -19,7 +19,7 @@
           
           <div class="form-group">
             {{ Form::label('price','Price: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::text('price',"",['class' => 'form-control']) }}
+            {{ Form::text('price',"",array('placeholder'=>'99.99','class' => 'form-control')) }}
             {{ $errors->first('price') }}
           </div>
           

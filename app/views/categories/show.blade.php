@@ -38,7 +38,15 @@
 </p>
 @endforeach
   
-  
+<p>
+  <strong>Created At:</strong>
+  {{ $category->created_at }}
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  {{ $category->updated_at }}
+</p>  
 
 {{ link_to_edit_category($category)  }}
 {{ link_to_route('categories.index','Back') }}

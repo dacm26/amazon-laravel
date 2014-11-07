@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,6 +17,5 @@ Route::resource('brands', 'BrandsController');
 Route::resource('products', 'ProductsController');
 Route::resource('customers', 'CustomersController');
 Route::get('/', 'RolesController@index');
-
 
 
