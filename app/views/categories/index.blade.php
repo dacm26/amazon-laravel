@@ -25,8 +25,8 @@
             <td>{{$category->id}}</td>
             <td>{{$category->name}}</td>
             <td>{{$category->code}}</td>
-            <td><button class="btn btn-default">{{ link_to_show_category($category)  }} </button></td>
-            <td><button  class="btn btn-default">{{ link_to_edit_category($category)  }}</button></td>
+            <td>{{ link_to_show_category($category)  }} </td>
+            <td>{{ link_to_edit_category($category)  }}</td>
             <td>{{ Form::open(array('route' => array('categories.destroy', $category->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>

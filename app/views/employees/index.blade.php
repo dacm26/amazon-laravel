@@ -28,8 +28,8 @@
             <td>{{$employee->name}}</td>
             <td>{{$employee->email}}</td>
             <td>{{ (Role::find($employee->role_id)->name) }}</td>
-            <td><button class="btn btn-default">{{ link_to_show_employee($employee)  }} </button></td>
-            <td><button  class="btn btn-default">{{ link_to_edit_employee($employee)  }}</button></td>
+            <td>{{ link_to_show_employee($employee)  }} </td>
+            <td>{{ link_to_edit_employee($employee)  }}</td>
             <td>{{ Form::open(array('route' => array('employees.destroy', $employee->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>

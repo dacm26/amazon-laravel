@@ -25,8 +25,8 @@
             <td>{{$customer->id}}</td>
             <td>{{$customer->name}}</td>
             <td>{{$customer->email}}</td>
-            <td><button class="btn btn-default">{{ link_to_show_customer($customer)  }} </button></td>
-            <td><button  class="btn btn-default">{{ link_to_edit_customer($customer)  }}</button></td>
+            <td>{{ link_to_show_customer($customer)  }} </td>
+            <td>{{ link_to_edit_customer($customer)  }} </td>
             <td>{{ Form::open(array('route' => array('customers.destroy', $customer->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>

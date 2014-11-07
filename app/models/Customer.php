@@ -11,7 +11,7 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = [
     
     'create' => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email|Unique:customers',
            'birthday' => 'required',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}/|Unique:customers',
@@ -21,7 +21,7 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
            'postal_code' => 'required|regex:/^\+?[\d]{5,15}/'
         ],
     'edit'   => [
-           'name' => 'required|regex:/^([a-zA-Z]+)[\s]*/',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email',
            'birthday' => 'required',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}/',

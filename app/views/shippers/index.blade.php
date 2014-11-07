@@ -23,8 +23,8 @@
           <tr>
             <td>{{$shipper->id}}</td>
             <td>{{$shipper->name}}</td>
-            <td><button class="btn btn-default">{{ link_to_show_shipper($shipper)  }} </button></td>
-            <td><button  class="btn btn-default">{{ link_to_edit_shipper($shipper)  }}</button></td>
+            <td>{{ link_to_show_shipper($shipper)  }} </td>
+            <td>{{ link_to_edit_shipper($shipper)  }}</td>
             <td>{{ Form::open(array('route' => array('shippers.destroy', $shipper->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>

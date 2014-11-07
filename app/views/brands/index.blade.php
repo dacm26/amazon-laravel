@@ -23,8 +23,8 @@
           <tr>
             <td>{{$brand->id}}</td>
             <td>{{$brand->name}}</td>
-             <td><button class="btn btn-default">{{ link_to_show_brand($brand)  }}</button></td>
-            <td><button  class="btn btn-default">{{ link_to_edit_brand($brand)  }}</button></td>
+             <td>{{ link_to_show_brand($brand)  }}</td>
+            <td>{{ link_to_edit_brand($brand)  }}</td>
             <td>{{ Form::open(array('route' => array('brands.destroy', $brand->id), 'method' => 'delete')) }}
                       {{ Form::submit('Delete',['class' => 'btn btn-danger btn-mini']) }}
                   {{ Form::close() }}</td>
