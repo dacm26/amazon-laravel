@@ -9,13 +9,20 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::resource('roles', 'RolesController');
-Route::resource('employees', 'EmployeesController');
-Route::resource('categories', 'CategoriesController');
-Route::resource('shippers', 'ShippersController');
-Route::resource('brands', 'BrandsController');
-Route::resource('products', 'ProductsController');
-Route::resource('customers', 'CustomersController');
-Route::get('/', 'RolesController@index');
+Route::group(array('before'=>'auth'), function() { 
+  Route::resource('roles', 'RolesController');
+  Route::resource('employees', 'EmployeesController');
+  Route::resource('categories', 'CategoriesController');
+  Route::resource('shippers', 'ShippersController');
+  Route::resource('brands', 'BrandsController');
+  Route::resource('products', 'ProductsController');
+  Route::resource('customers', 'CustomersController');
+  Route::get('logout', 'SessionsController@destroy');
+
+});
+
+Route::get('/', 'SessionsController@create');
+Route::get('login', 'SessionsController@create');
+Route::resource('sessions','SessionsController');
 
 

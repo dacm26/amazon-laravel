@@ -1,0 +1,1 @@
+/home/action/workspace/myapp/app/views/sessions/index.blade.php
