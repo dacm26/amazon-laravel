@@ -17,6 +17,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('brands', 'BrandsController');
   Route::resource('products', 'ProductsController');
   Route::resource('customers', 'CustomersController');
+  Route::resource('taxes', 'TaxesController');
   Route::get('logout', 'SessionsController@destroy');
 
 });

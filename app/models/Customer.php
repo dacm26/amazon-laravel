@@ -14,19 +14,19 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
            'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email|Unique:customers',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}/|Unique:customers',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:customers',
            'gender' => 'required',
            'password' => 'required',
            'address' => 'required',
-           'postal_code' => 'required|regex:/^\+?[\d]{5,15}/'
+           'postal_code' => 'required|regex:/^\+?[\d]{5,15}$/'
         ],
     'edit'   => [
            'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}/',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
            'address' => 'required',
-           'postal_code' => 'required|regex:/^\+?[\d]{5,15}/'
+           'postal_code' => 'required|regex:/^\+?[\d]{5,15}$/'
         ],
         'destroy'   => [
 

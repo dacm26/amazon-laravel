@@ -19,7 +19,7 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
            'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email|Unique:employees',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}/|Unique:employees',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:employees',
            'gender' => 'required',
            'password' => 'required',
            'role_id' => 'required' 
@@ -28,7 +28,7 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
            'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
            'email' => 'required|email',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}/',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
            'role_id' => 'required' 
         ],
         'destroy'   => [

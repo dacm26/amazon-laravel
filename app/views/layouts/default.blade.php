@@ -164,6 +164,17 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                           <a href="#"><i class="glyphicon glyphicon-usd"></i> Taxes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::route('taxes.show') }}">Show Tax</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('taxes.edit') }}">Edit Tax</a>
+                                </li>
+                            </ul> 
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

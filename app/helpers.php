@@ -93,3 +93,8 @@ function link_to_edit_customer(Customer $customer){
 function link_to_create_customer(){
   return link_to_route('customers.create','Create an Customer');
 }
+
+function link_to_edit_tax(Tax $tax){
+  return link_to_route('taxes.edit','Edit',[$tax->id]);
+}
+
