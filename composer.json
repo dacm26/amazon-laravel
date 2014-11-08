@@ -25,7 +25,8 @@
     "phpunit/phpunit": "3.7.*"
   },
   "require": {
-        "nesbot/Carbon": "*"
+        "nesbot/Carbon": "*",
+        "ollieread/multiauth": "dev-master"
    },
   
 	"scripts": {

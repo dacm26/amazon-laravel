@@ -9,7 +9,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::group(array('before'=>'auth'), function() { 
+Route::group(array('before'=>'auth.employee'), function() { 
   Route::resource('roles', 'RolesController');
   Route::resource('employees', 'EmployeesController');
   Route::resource('categories', 'CategoriesController');
