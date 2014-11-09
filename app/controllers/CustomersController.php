@@ -52,7 +52,7 @@ class CustomersController extends \BaseController {
     }
     $customer = new Customer(Input::all());
     $customer->save();
-    return Redirect::route('customers.index');
+    return Redirect::route('home.index');
 	}
 
 	/**

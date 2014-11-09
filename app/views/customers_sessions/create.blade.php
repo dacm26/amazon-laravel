@@ -199,6 +199,7 @@
               
 
              <div class="form-item">
+               <p class="pull-left"><a href="{{ URL::to('signup') }}"><small>Register</small></a></p>
                {{ Form::submit('Login', array('class'=>'login pull-right','onclick'=>'return validarCamposNoVacios()')) }}
                <div class="clear-fix"></div>
              </div>

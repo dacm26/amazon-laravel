@@ -43,7 +43,7 @@ Route::filter('auth.employee', function(){
 
 Route::filter('auth.customer', function(){
    if (Auth::customer()->guest()){
-        return Redirect::guest('login');
+        return Redirect::guest('signin');
     }
 });
 

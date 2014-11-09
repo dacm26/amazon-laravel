@@ -102,9 +102,7 @@
                                 <li>
                                     <a href="{{ URL::route('customers.index') }}">List Customers</a>
                                 </li>
-                                <li>
-                                    <a href="{{ URL::route('customers.create') }}">Create Customers</a>
-                                </li>
+
                             </ul>
                         </li>                      
                         <li>
