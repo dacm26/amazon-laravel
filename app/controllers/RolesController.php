@@ -51,8 +51,9 @@ class RolesController extends \BaseController {
           return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        Role::create($data);
-
+        $role= new Role($data);
+        $role->updated_by=Auth::employee()->user()->email;
+        $role->save();
       
 
 		return Redirect::route('roles.index');
@@ -99,7 +100,8 @@ class RolesController extends \BaseController {
     }
     $role = Role::findOrFail($id);
     $role->update($data);
-    
+            $role->updated_by=Auth::employee()->user()->email;
+        $role->save();
 		return Redirect::route('roles.index');
     }
     catch(Exception $e){

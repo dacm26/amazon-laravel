@@ -55,7 +55,10 @@
   {{ $product->updated_at }}
 </p>   
   
-
+<p>
+  <strong>Updated By:</strong>
+  {{ $product->updated_by }}
+</p>  
 {{ link_to_edit_product($product)  }}
 {{ link_to_route('products.index','Back') }}
      @else

@@ -54,6 +54,7 @@ class EmployeesController extends \BaseController {
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $employee = new Employee(Input::all());
+    $employee->updated_by=Auth::employee()->user()->email;
     $employee->save();
     return Redirect::route('employees.index');
     /*
@@ -113,6 +114,8 @@ class EmployeesController extends \BaseController {
     }
     $employee = Employee::findOrFail($id);
     $employee->update($data);
+      $employee->updated_by=Auth::employee()->user()->email;
+      $employee->save();
     return Redirect::route('employees.index');
     
         }

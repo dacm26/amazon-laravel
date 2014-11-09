@@ -24,6 +24,10 @@
 <p>
   <strong>Updated At:</strong>
   {{ $role->updated_at }}
+</p>
+<p>
+  <strong>Updated By:</strong>
+  {{ $role->updated_by }}
 </p>  
 {{ link_to_edit_role($role)  }}
 {{ link_to_route('roles.index','Back') }}

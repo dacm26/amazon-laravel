@@ -50,7 +50,10 @@
   <strong>Updated At:</strong>
   {{ $employee->updated_at }}
 </p>   
-  
+<p>
+<strong>Updated By:</strong>
+  {{ $employee->updated_by }}
+</p>  
 
 {{ link_to_edit_employee($employee)  }}
 {{ link_to_route('employees.index','Back') }}

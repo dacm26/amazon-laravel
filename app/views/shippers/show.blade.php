@@ -39,6 +39,10 @@
   <strong>Updated At:</strong>
   {{ $shipper->updated_at }}
 </p>
+<p>
+  <strong>Updated By:</strong>
+  {{ $shipper->updated_by }}
+</p> 
 {{ link_to_edit_shipper($shipper)  }}
 {{ link_to_route('shippers.index','Back') }}
 

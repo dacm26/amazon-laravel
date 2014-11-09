@@ -54,8 +54,9 @@ class ProductsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Product::create($data);
-
+    $product = new Product(Input::all());
+    $product->updated_by=Auth::employee()->user()->email;
+    $product->save();
 		return Redirect::route('products.index');
 	}
 
@@ -107,7 +108,8 @@ class ProductsController extends \BaseController {
 		}
 
 		$product->update($data);
-
+    $product->updated_by=Auth::employee()->user()->email;
+    $product->save();
 		return Redirect::route('products.index');
         }
     catch(Exception $e){

@@ -48,6 +48,7 @@ class CategoriesController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
     $category = new Category($data);
+    $category->updated_by=Auth::employee()->user()->email;
     $category->save();
     
     $temp=Input::get('attribute_name_1');
@@ -140,7 +141,8 @@ class CategoriesController extends \BaseController {
 		}
 
 		$category->update($data);
-
+    $category->updated_by=Auth::employee()->user()->email;
+    $category->save();
 		return Redirect::route('categories.index');
         }
     catch(Exception $e){

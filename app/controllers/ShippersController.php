@@ -48,8 +48,9 @@ class ShippersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Shipper::create($data);
-
+		$shipper= new Shipper($data);
+            $shipper->updated_by=Auth::employee()->user()->email;
+        $shipper->save();
 		return Redirect::route('shippers.index');
 
 	}
@@ -99,7 +100,8 @@ class ShippersController extends \BaseController {
 		}
 
 		$shipper->update($data);
-
+            $shipper->updated_by=Auth::employee()->user()->email;
+        $shipper->save();
 		return Redirect::route('shippers.index');
         }
     catch(Exception $e){

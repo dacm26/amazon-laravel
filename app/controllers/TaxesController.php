@@ -87,7 +87,8 @@ class TaxesController extends \BaseController {
 		}
 
 		$tax->update($data);
-
+            $tax->updated_by=Auth::employee()->user()->email;
+        $tax->save();
 		return Redirect::route('taxes.show');
 	}
 

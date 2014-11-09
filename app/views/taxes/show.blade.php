@@ -18,6 +18,10 @@
   <strong>Updated At:</strong>
   {{ $tax->updated_at }}
 </p>
+<p>
+  <strong>Updated By:</strong>
+  {{ $tax->updated_by }}
+</p> 
 {{ link_to_edit_tax($tax)  }}
 
 @stop

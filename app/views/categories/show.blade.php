@@ -54,7 +54,10 @@
   <strong>Updated At:</strong>
   {{ $category->updated_at }}
 </p>  
-
+<p>
+<strong>Updated By:</strong>
+  {{ $category->updated_by }}
+</p>
 {{ link_to_edit_category($category)  }}
 {{ link_to_route('categories.index','Back') }}
 

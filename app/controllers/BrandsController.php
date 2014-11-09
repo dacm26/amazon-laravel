@@ -50,8 +50,9 @@ class BrandsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Brand::create($data);
-
+		$brand=new Brand($data);
+    $brand->updated_by=Auth::employee()->user()->email;
+    $brand->save();
 		return Redirect::route('brands.index');
 
 	}
@@ -102,7 +103,8 @@ class BrandsController extends \BaseController {
 		}
 
 		$brand->update($data);
-
+    $brand->updated_by=Auth::employee()->user()->email;
+    $brand->save();
 		return Redirect::route('brands.index');
         }
     catch(Exception $e){

@@ -24,6 +24,11 @@
   <strong>Updated At:</strong>
   {{ $brand->updated_at }}
 </p>
+
+<p>
+  <strong>Updated By:</strong>
+  {{ $brand->updated_by }}
+</p>
 {{ link_to_edit_brand($brand)  }}
 {{ link_to_route('brands.index','Back') }}
 
