@@ -4,14 +4,10 @@
 <head>
   <meta charset="utf-8">
   <script src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-  <style type="text/css">
+<style type="text/css">
     body {
       font-family:'HelveticaNeue','Arial', sans-serif;
-      background: -webkit-linear-gradient(45deg, #399E98 25%, #3aa19b 25%, #3aa19b 50%, #399E98 50%, #399E98 75%, #3aa19b 75%, #3aa19b);
-      background: -moz-linear-gradient(45deg, #399E98 25%, #3aa19b 25%, #3aa19b 50%, #399E98 50%, #399E98 75%, #3aa19b 75%, #3aa19b);
-      background: -o-linear-gradient(45deg, #399E98 25%, #3aa19b 25%, #3aa19b 50%, #399E98 50%, #399E98 75%, #3aa19b 75%, #3aa19b);
-      background: linear-gradient(45deg, #399E98 25%, #3aa19b 25%, #3aa19b 50%, #399E98 50%, #399E98 75%, #3aa19b 75%, #3aa19b);
-      background-size:100px 100px;
+
     }
     a{color:#58bff6;text-decoration: none;}
     a:hover{color:#aaa; }
@@ -46,6 +42,7 @@
       top:50%;
       margin-left:-180px;
       margin-top:-200px;
+      border: #676767 solid 2px;
     }
     div.form-item{position: relative; display: block; margin-bottom: 20px;}
     input{transition: all .2s ease;}
@@ -106,7 +103,7 @@
       font-weight: 500;
       color: transparent;
       font-size:100px;
-      background: url("http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/05/rainbow-nebula.jpg") repeat;
+      background: #55b1df;
       background-position: 40% 50%;
       -webkit-background-clip: text;
       position:relative;
@@ -182,7 +179,7 @@
               <div class="logo">
                 <div class="container">
                   <div class="title">Amazon</div>
-                  <div class="subtitle"> User Login </div>
+                  <div class="subtitle"> Admin Login </div>
                 </div>
               </div>
 

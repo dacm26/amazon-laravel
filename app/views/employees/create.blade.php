@@ -32,7 +32,7 @@
       
           <div class="form-group">
             {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
-            {{ Form::radio('gender','M ',['class' => 'exampleInputEmail1']) }} <label>Male</label><br>
+            {{ Form::radio('gender','M',['class' => 'exampleInputEmail1']) }} <label>Male</label><br>
             {{ Form::radio('gender', 'F', true) }}<label> Female</label>
           </div>
 

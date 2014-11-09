@@ -41,7 +41,19 @@
             {{ $errors->first('postal_code') }}
           </div>
 
-          
+          @if( ($customer->gender) == 'F')
+              <div class="form-group">
+                {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
+                {{ Form::radio('gender','M') }} <label>Male</label><br>
+                {{ Form::radio('gender', 'F', true) }}<label> Female</label>
+              </div>
+          @else
+              <div class="form-group">
+                {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
+                {{ Form::radio('gender','M',true) }} <label>Male</label><br>
+                {{ Form::radio('gender', 'F') }}<label> Female</label>
+              </div>
+          @endif
           
                 
           <div class="container col-sm-4 col-sm-offset-4">

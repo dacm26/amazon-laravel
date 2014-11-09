@@ -22,6 +22,20 @@
             {{ Form::text('code',$category->code,['class' => 'form-control']) }}
             {{ $errors->first('code') }}
           </div>
+          @if( ($category->tax_free) == 1)
+              <div class="form-group">
+            {{ Form::label('tax_free','Tax Free: ',['class' => 'exampleInputEmail1']) }}<br>
+            {{ Form::radio('tax_free','1',true) }} <label>Yes</label><br>
+            {{ Form::radio('tax_free', '0') }}<label> No</label>
+              </div>
+          @else
+              <div class="form-group">
+            {{ Form::label('tax_free','Tax Free: ',['class' => 'exampleInputEmail1']) }}<br>
+            {{ Form::radio('tax_free','1') }} <label>Yes</label><br>
+            {{ Form::radio('tax_free', '0', true) }}<label> No</label>
+              </div>
+          @endif
+          
 
           <div class="container col-sm-4 col-sm-offset-4">
              {{ Form::submit('Save',['class' => 'btn btn-default']) }}

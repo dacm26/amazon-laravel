@@ -27,7 +27,7 @@
       
           <div class="form-group">
             {{ Form::label('tax_free','Tax Free: ',['class' => 'exampleInputEmail1']) }}<br>
-            {{ Form::radio('tax_free','1 ',['class' => 'exampleInputEmail1']) }} <label>Yes</label><br>
+            {{ Form::radio('tax_free','1',['class' => 'exampleInputEmail1']) }} <label>Yes</label><br>
             {{ Form::radio('tax_free', '0', true,['class' => 'exampleInputEmail1']) }}<label> No</label>
           </div>
       

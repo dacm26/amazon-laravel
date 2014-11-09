@@ -28,8 +28,16 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::post('/products/search','ProductsController@search');   
 });
 
-Route::get('/', 'SessionsController@create');
+Route::group(array('before'=>'auth.customer'), function() { 
+  Route::get('signout', 'CustomersSessionsController@destroy');
+});
+
 Route::get('login', 'SessionsController@create');
+
+Route::get('/', 'CustomersSessionsController@create');
+Route::get('/signin', 'CustomersSessionsController@create');
+
 Route::resource('sessions','SessionsController');
+Route::resource('customers_sessions','CustomersSessionsController');
 
 

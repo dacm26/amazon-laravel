@@ -32,7 +32,19 @@
             {{ $errors->first('mobile') }}
           </div>
           
-
+          @if( ($employee->gender) == 'F')
+              <div class="form-group">
+                {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
+                {{ Form::radio('gender','M') }} <label>Male</label><br>
+                {{ Form::radio('gender', 'F', true) }}<label> Female</label>
+              </div>
+          @else
+              <div class="form-group">
+                {{ Form::label('gender','Gender: ',['class' => 'exampleInputEmail1']) }}<br>
+                {{ Form::radio('gender','M',true) }} <label>Male</label><br>
+                {{ Form::radio('gender', 'F') }}<label> Female</label>
+              </div>
+          @endif
       
           <div class="form-group">
             {{ Form::label('role_id','Role: ',['class' => 'exampleInputEmail1']) }}
