@@ -9,6 +9,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('customers/create', array('as' => 'customers.create', 'uses' => 'CustomersController@create'));
+Route::post('customers', array('as' => 'customers.store', 'uses' => 'CustomersController@store'));
+
 Route::group(array('before'=>'auth.employee'), function() { 
   Route::resource('roles', 'RolesController');
   Route::resource('employees', 'EmployeesController');
@@ -48,6 +51,5 @@ Route::get('signup', 'CustomersSessionsController@signup');
 Route::resource('sessions','SessionsController');
 Route::resource('customers_sessions','CustomersSessionsController');
 
-Route::get('customers/create', array('as' => 'customers.create', 'uses' => 'CustomersController@create'));
-Route::post('customers', array('as' => 'customers.store', 'uses' => 'CustomersController@store'));
+
 
