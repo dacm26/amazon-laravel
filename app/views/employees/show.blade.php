@@ -33,7 +33,14 @@
   <strong>Role:</strong>
    {{ (Role::find($employee->role_id)->name) }} 
 </p>
-  
+<p>
+  <strong>Inactive:</strong>
+  @if($employee->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>  
 <p>
   <strong>Created At:</strong>
   {{ $employee->created_at }}

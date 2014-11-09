@@ -37,7 +37,14 @@
   <strong>Gender:</strong>
   {{ $customer->gender }}
 </p>
-
+<p>
+  <strong>Inactive:</strong>
+  @if($customer->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>
 <p>
   <strong>Created At:</strong>
   {{ $customer->created_at }}

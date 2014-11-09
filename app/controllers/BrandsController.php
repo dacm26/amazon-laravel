@@ -9,11 +9,23 @@ class BrandsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$brands = Brand::all();
+		$brands = Brand::where('inactive', '=', 0)->get();
 
 		return View::make('brands.index', compact('brands'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    
+    if(!($keyword == '')){
+      $brands=Brand::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+      $brands = Brand::where('inactive', '=', 0)->get();
+    }
+   
+		return View::make('brands.index', compact('brands'));
+	}
 	/**
 	 * Show the form for creating a new brand
 	 *

@@ -9,16 +9,19 @@ class RolesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$roles = Role::all();
+		$roles = Role::where('inactive', '=', 0)->get();
 
 		return View::make('roles.index', compact('roles'));
 	}
   public function search()
 	{
     $keyword = Input::get('keyword');
-    $roles = Role::all();
+    
     if(!($keyword == '')){
       $roles=Role::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+      $roles = Role::where('inactive', '=', 0)->get();
     }
    
 		return View::make('roles.index', compact('roles'));

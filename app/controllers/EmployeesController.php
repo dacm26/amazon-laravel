@@ -10,10 +10,21 @@ class EmployeesController extends \BaseController {
 	public function index()
 	{
     $roles = Role::where('inactive','=','false')->get()->lists('name','id');
-		$employees = Employee::all();
+		$employees = Employee::where('inactive', '=', 0)->get();
 		return View::make('employees.index', compact('employees','roles'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    $roles = Role::where('inactive','=','false')->get()->lists('name','id');
+    if(!($keyword == '')){
+      $employees=Employee::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+      $employees = Employee::where('inactive', '=', 0)->get();
+    }
+		return View::make('employees.index', compact('employees','roles'));
+	}
 	/**
 	 * Show the form for creating a new employee
 	 *

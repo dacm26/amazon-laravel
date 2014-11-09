@@ -20,7 +20,12 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('taxes', 'TaxesController');
   Route::get('logout', 'SessionsController@destroy');
   Route::post('/roles/search','RolesController@search');
-
+  Route::post('/brands/search','BrandsController@search');
+  Route::post('/categories/search','CategoriesController@search');
+  Route::post('/customers/search','CustomersController@search'); 
+  Route::post('/employees/search','EmployeesController@search');
+  Route::post('/shippers/search','ShippersController@search');
+  Route::post('/products/search','ProductsController@search');   
 });
 
 Route::get('/', 'SessionsController@create');

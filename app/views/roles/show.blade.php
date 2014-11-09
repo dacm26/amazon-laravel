@@ -9,6 +9,14 @@
   {{ $role->name }}
 </p>
 <p>
+  <strong>Inactive:</strong>
+  @if($role->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>
+<p>
   <strong>Created At:</strong>
   {{ $role->created_at }}
 </p>

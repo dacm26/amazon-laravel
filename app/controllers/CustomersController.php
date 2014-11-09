@@ -9,11 +9,21 @@ class CustomersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$customers = Customer::all();
+		$customers = Customer::where('inactive', '=', 0)->get();
 
 		return View::make('customers.index', compact('customers'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    if(!($keyword == '')){
+      $customers=Customer::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+      $customers = Customer::where('inactive', '=', 0)->get();
+    }
+		return View::make('customers.index', compact('customers'));
+	}
 	/**
 	 * Show the form for creating a new customer
 	 *

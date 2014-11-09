@@ -9,11 +9,21 @@ class ShippersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$shippers = Shipper::all();
+		$shippers = Shipper::where('inactive', '=', 0)->get();
 
 		return View::make('shippers.index', compact('shippers'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    if(!($keyword == '')){
+      $shippers=Shipper::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+     $shippers = Shipper::where('inactive', '=', 0)->get();
+    }
+		return View::make('shippers.index', compact('shippers'));
+	}
 	/**
 	 * Show the form for creating a new shipper
 	 *

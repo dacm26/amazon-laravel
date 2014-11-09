@@ -7,7 +7,14 @@
   <strong>Name:</strong>
   {{ $brand->name }}
 </p>
-
+<p>
+  <strong>Inactive:</strong>
+  @if($brand->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>
 <p>
   <strong>Created At:</strong>
   {{ $brand->created_at }}

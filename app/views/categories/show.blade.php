@@ -37,7 +37,14 @@
   {{ $attribute->value }}<br>
 </p>
 @endforeach
-  
+<p>
+  <strong>Inactive:</strong>
+  @if($category->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>  
 <p>
   <strong>Created At:</strong>
   {{ $category->created_at }}

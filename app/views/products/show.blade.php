@@ -37,7 +37,14 @@
   <strong>Category:</strong>
   {{ Category::find($product->category_id)->name }}
 </p>
-
+<p>
+  <strong>Inactive:</strong>
+  @if($product->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>
 <p>
   <strong>Created At:</strong>
   {{ $product->created_at }}

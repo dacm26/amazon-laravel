@@ -23,6 +23,14 @@
   {{ $shipper->percentage }} %
 </p>
 <p>
+  <strong>Inactive:</strong>
+  @if($shipper->inactive)
+      Yes
+  @else
+      No
+  @endif
+</p>
+<p>
   <strong>Created At:</strong>
   {{ $shipper->created_at }}
 </p>

@@ -9,11 +9,21 @@ class CategoriesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$categories = Category::all();
+		$categories = Category::where('inactive', '=', 0)->get();
 
 		return View::make('categories.index', compact('categories'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    if(!($keyword == '')){
+      $categories=Category::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+      $categories = Category::where('inactive', '=', 0)->get();
+    }
+		return View::make('categories.index', compact('categories'));
+	}
 	/**
 	 * Show the form for creating a new category
 	 *

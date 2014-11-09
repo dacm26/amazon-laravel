@@ -9,12 +9,24 @@ class ProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$products = Product::all();
+		$products = Product::where('inactive', '=', 0)->get();
     $categories = Category::where('inactive','=','false')->get()->lists('name','id');
     $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('products.index', compact('products','categories','brands'));
 	}
-
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    if(!($keyword == '')){
+      $products=Product::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+    else{
+     $products = Product::where('inactive', '=', 0)->get();
+    }
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
+		return View::make('products.index', compact('products','categories','brands'));
+	}
 	/**
 	 * Show the form for creating a new product
 	 *
