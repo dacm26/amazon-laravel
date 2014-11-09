@@ -19,6 +19,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('customers', 'CustomersController');
   Route::resource('taxes', 'TaxesController');
   Route::get('logout', 'SessionsController@destroy');
+  Route::post('/roles/search','RolesController@search');
 
 });
 

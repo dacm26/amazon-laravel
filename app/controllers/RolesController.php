@@ -13,6 +13,16 @@ class RolesController extends \BaseController {
 
 		return View::make('roles.index', compact('roles'));
 	}
+  public function search()
+	{
+    $keyword = Input::get('keyword');
+    $roles = Role::all();
+    if(!($keyword == '')){
+      $roles=Role::where('name','LIKE','%'.$keyword.'%')->get();  
+    }
+   
+		return View::make('roles.index', compact('roles'));
+	}
 
 	/**
 	 * Show the form for creating a new role
