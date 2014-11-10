@@ -19,6 +19,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('shippers', 'ShippersController');
   Route::resource('brands', 'BrandsController');
   Route::resource('products', 'ProductsController');
+  Route::get('/trending/products',array('as' => 'products.trending', 'uses' => 'ProductsController@trending'));
   Route::get('customers', array('as' => 'customers.index', 'uses' => 'CustomersController@index'));
   Route::get('customers/{customers}', array('as' => 'customers.show', 'uses' => 'CustomersController@show'));
   Route::get('customers/{customers}/edit', array('as' => 'customers.edit', 'uses' => 'CustomersController@edit'));

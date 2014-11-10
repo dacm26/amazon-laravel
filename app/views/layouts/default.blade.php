@@ -114,6 +114,9 @@
                                 <li>
                                     <a href="{{ URL::route('products.create') }}">Create Product</a>
                                 </li>
+                                 <li>
+                                    <a href="{{ URL::route('products.trending') }}">Trending Products</a>
+                                </li>                             
                             </ul>
                         </li>
                         <li>

@@ -7,13 +7,17 @@ class ProductsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+  
 	public function index()
 	{
 		$products = Product::where('inactive', '=', 0)->get();
     $categories = Category::where('inactive','=','false')->get()->lists('name','id');
     $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
 		return View::make('products.index', compact('products','categories','brands'));
-	}
+  }
+	
+
   public function search()
 	{
     $keyword = Input::get('keyword');
@@ -59,7 +63,6 @@ class ProductsController extends \BaseController {
     $product->save();
 		return Redirect::route('products.index');
 	}
-
 	/**
 	 * Display the specified product.
 	 *
@@ -136,5 +139,12 @@ class ProductsController extends \BaseController {
 
 		return Redirect::route('products.index');
 	}
+	public function trending()
+	{
 
+    $products = Product::where('inactive', '=', 0)->orderBy('visits','desc')->get();
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
+		return View::make('products.trending', compact('products','categories','brands'));
+	}
 }
