@@ -162,6 +162,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                      
                         <li>
                            <a href="#"><i class="glyphicon glyphicon-usd"></i> Taxes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -173,6 +174,17 @@
                                 </li>
                             </ul> 
                         </li>
+                        <li>
+                           <a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Discounts<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::route('discounts.index') }}">List Discounts</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('discounts.create') }}">Create Discount</a>
+                                </li>
+                            </ul> 
+                        </li>                      
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

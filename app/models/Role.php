@@ -18,6 +18,7 @@ class Role extends \Eloquent {
      	];
   protected $defaults = array(
      'inactive' => false,
+    'updated_by'=>' '
   );
 
   public function __construct(array $attributes = array())

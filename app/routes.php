@@ -19,6 +19,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('shippers', 'ShippersController');
   Route::resource('brands', 'BrandsController');
   Route::resource('products', 'ProductsController');
+  Route::resource('discounts', 'DiscountsController');
   Route::get('customers', array('as' => 'customers.index', 'uses' => 'CustomersController@index'));
   Route::get('customers/{customers}', array('as' => 'customers.show', 'uses' => 'CustomersController@show'));
   Route::get('customers/{customers}/edit', array('as' => 'customers.edit', 'uses' => 'CustomersController@edit'));
@@ -33,7 +34,9 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::post('/customers/search','CustomersController@search'); 
   Route::post('/employees/search','EmployeesController@search');
   Route::post('/shippers/search','ShippersController@search');
-  Route::post('/products/search','ProductsController@search');   
+  Route::post('/products/search','ProductsController@search');
+  
+  
 });
 
 Route::group(array('before'=>'auth.customer'), function() { 
