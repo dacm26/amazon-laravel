@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Amazom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap -->
-    <link href="{{ URL::asset('main/css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('main/css/bootstrap-responsive.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('main/css/style.css') }}" rel="stylesheet"> 
-    
-    <!--Font-->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
-    
-    
-    
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-      
-      <!-- Fav and touch icons -->
-      <link rel="shortcut icon" href="{{ URL::asset('main/ico/favicon.ico') }}">
-      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::asset('main/ico/apple-touch-icon-144-precomposed.png') }}">
-      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::asset('main/ico/apple-touch-icon-114-precomposed.png') }}">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::asset('main/ico/apple-touch-icon-72-precomposed.png') }}">
-      <link rel="apple-touch-icon-precomposed" href="{{ URL::asset('main/ico/apple-touch-icon-57-precomposed.png') }}">
+@extends('layouts.main')
 
-
-      
-
-    <!-- SCRIPT 
-    ============================================================-->  
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="{{ URL::asset('main/js/bootstrap.min.js') }}"></script>
-      
-      
-  </head>
-  <body>
+@section('content')
   <!--HEADER ROW-->
   <div id="header-row">
     <div class="container">
@@ -56,21 +18,21 @@
 
                       <ul class="nav">
                         <li>
-                          <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Search Product">
-                              <select>
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 1</option>
-                                <option value="2">Category 2</option>
-                                <option value="3">Category 3</option>
-                              </select>
-                              <button type="submit" class="btn btn-default">Search</button>
-                            </div>
-                          </form>
+                            
+                            {{ Form::open(array('route' => array('home.search'),'class'=>'navbar-form navbar-left', 'method' => 'get')) }}
+                              <div class="form-group">
+                                 {{ Form::text('keyword',null,array('placeholder'=>'Search','class' => 'form-control')) }}
+                                <div class="form-group">
+                                  {{ Form::select('category', $categories) }}
+                                  {{ $errors->first('category') }}
+                                </div>
+                                
+                                {{ Form::submit('Search',['class' => 'btn btn-default']) }}
+                              </div>
+                          {{ Form::close() }}
                         </li>
                         <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li><a href="#">My WishList</a></li>
+                        <li><a href="{{ URL::to('wishlist')}}">My WishList</a></li>
                         <li><a href="{{ URL::to('signout') }}">{{Auth::customer()->user()->name }}, Not You? Sign Out</a></li>
                       </ul>
                   </div>
@@ -80,12 +42,9 @@
       </div>
     </div>
   </div>
-  <!-- /HEADER ROW -->
+  <!-- /HEADER ROW --> 
 
-  
-
-
-  <div class="container">
+<div class="container">
 
   <!--Carousel
   ==================================================-->
@@ -177,30 +136,12 @@
       </div>
   </div>
 
+@stop
 
-<!--Footer
-==========================-->
 
-<footer>
-    <div class="container">
-      <div class="row">
-        <div class="span6">Copyright &copy 2014 Amazon | All Rights Reserved  <br>
-        <small>Análisis y Diseño de Sistemas II - Unitec.</small>
-        </div>
-        <div class="span6">
-            <div class="social pull-right">
-                <a href="#"><img src="{{ URL::asset('main/img/social/googleplus.png') }}" alt=""></a>
-                <a href="#"><img src="{{ URL::asset('main/img/social/dribbble.png') }}" alt=""></a>
-                <a href="#"><img src="{{ URL::asset('main/img/social/twitter.png') }}" alt=""></a>
-                <a href="#"><img src="{{ URL::asset('main/img/social/dribbble.png') }}" alt=""></a>
-                <a href="#"><img src="{{ URL::asset('main/img/social/rss.png') }}" alt=""></a>
-            </div>
-        </div>
-      </div>
-    </div>
-</footer>
 
-<!--/.Footer-->
+  
 
-  </body>
-</html>
+
+
+

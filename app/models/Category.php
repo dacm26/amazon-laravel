@@ -5,13 +5,13 @@ class Category extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
 		    'create' => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|Unique:categories|between:10,70',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|Unique:categories|between:4,70',
            'description' => 'required|between:10,150',
            'code' => 'required|regex:/^([\w]+)/|Unique:categories|between:5,12',
            'tax_free' => 'required' 
         ],
         'edit'   => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:10,70',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:4,70',
            'description' => 'required|between:10,150',
            'code' => 'required|regex:/^([\w]+)/|between:5,12'
         ],

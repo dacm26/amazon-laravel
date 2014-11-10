@@ -19,6 +19,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::resource('shippers', 'ShippersController');
   Route::resource('brands', 'BrandsController');
   Route::resource('products', 'ProductsController');
+  Route::get('/trending/products',array('as' => 'products.trending', 'uses' => 'ProductsController@trending'));
   Route::get('customers', array('as' => 'customers.index', 'uses' => 'CustomersController@index'));
   Route::get('customers/{customers}', array('as' => 'customers.show', 'uses' => 'CustomersController@show'));
   Route::get('customers/{customers}/edit', array('as' => 'customers.edit', 'uses' => 'CustomersController@edit'));
@@ -39,6 +40,11 @@ Route::group(array('before'=>'auth.employee'), function() {
 Route::group(array('before'=>'auth.customer'), function() { 
   Route::get('signout', 'CustomersSessionsController@destroy');
   Route::get('index', array('as' => 'home.index', 'uses' => 'HomeController@index'));
+  Route::get('search', array('as' => 'home.search', 'uses' => 'HomeController@search'));
+  Route::get('show/{products}', array('as' => 'home.show', 'uses' => 'HomeController@show'));
+  Route::get('wishlist', array('as' => 'home.wishlist', 'uses' => 'HomeController@wishlist'));
+  Route::post('/wishlist/{products}',array('as' => 'home.add_to_wishlist', 'uses' => 'HomeController@add_to_wishlist'));
+  Route::delete('/wishlist/{products}',array('as' => 'home.remove_wishlist_item', 'uses' => 'HomeController@remove_wishlist_item'));
 });
 
 Route::get('login', 'SessionsController@create');
