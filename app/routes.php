@@ -42,6 +42,9 @@ Route::group(array('before'=>'auth.customer'), function() {
   Route::get('index', array('as' => 'home.index', 'uses' => 'HomeController@index'));
   Route::get('search', array('as' => 'home.search', 'uses' => 'HomeController@search'));
   Route::get('show/{products}', array('as' => 'home.show', 'uses' => 'HomeController@show'));
+  Route::get('wishlist', array('as' => 'home.wishlist', 'uses' => 'HomeController@wishlist'));
+  Route::post('/wishlist/{products}',array('as' => 'home.add_to_wishlist', 'uses' => 'HomeController@add_to_wishlist'));
+  Route::delete('/wishlist/{products}',array('as' => 'home.remove_wishlist_item', 'uses' => 'HomeController@remove_wishlist_item'));
 });
 
 Route::get('login', 'SessionsController@create');

@@ -32,7 +32,7 @@
                           {{ Form::close() }}
                         </li>
                         <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li><a href="#">My WishList</a></li>
+                        <li><a href="{{ URL::to('wishlist')}}">My WishList</a></li>
                         <li><a href="{{ URL::to('signout') }}">{{Auth::customer()->user()->name }}, Not You? Sign Out</a></li>
                       </ul>
                   </div>
@@ -58,9 +58,20 @@
       <h3>Quantity: <b><input type="number" min="1" step="1" id="UnitsInStock"></b></h3>
       <h3>Price: <b><span style="font-size:30px;">${{ $product->price }}</span></b></h3>
       <br>
-      <div style="text-align:center;">
-        <button type="button" class="btn btn-success">Add To WishList</button>
+      @if($check)
+              <div style="text-align:center;">
+                   {{ Form::open(array('route' => array('home.remove_wishlist_item', $product->id),'class'=>'navbar-form navbar-left', 'method' => 'delete')) }}
+              {{ Form::submit('Remove from Wishlist',['class' => 'btn btn-danger']) }}
+        {{ Form::close() }}
       </div>
+      @else
+            <div style="text-align:center;">
+        {{ Form::open(array('route' => array('home.add_to_wishlist', $product->id),'class'=>'navbar-form navbar-left', 'method' => 'post')) }}
+              {{ Form::submit('Add To WishList',['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+      </div>
+      @endif
+
     </div>
   </div>
 

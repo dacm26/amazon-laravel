@@ -62,6 +62,9 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
   public function setPasswordAttribute($pass){
       $this->attributes['password'] = Hash::make($pass);
   }
-
+  public function wishlist()
+  {
+    return $this->belongsTo('Wishlist');
+  }
   
 }

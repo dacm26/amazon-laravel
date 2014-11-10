@@ -33,10 +33,60 @@ class HomeController extends BaseController {
     $product =Product::findOrFail($id);
     $product->visits=$product->visits+1;
     $product->save();
+    $wish =Wishlist::where('customer_id','=',Auth::customer()->user()->id)->where('product_id','=',$id)->first();
+    $check=0;
+    if($wish){
+      $check=1;
+    }
     $brand=Brand::findOrFail($product->brand_id);
-    $category=Brand::findOrFail($product->category_id);
+    $category=Category::findOrFail($product->category_id);
     $categories = Category::where('inactive','=','false')->get()->lists('name','id');
-		return View::make('home.show', compact('categories','category','product','brand'));
-	}  
+		return View::make('home.show', compact('categories','category','product','brand','check'));
+	}
+  
+  public function add_to_wishlist($id){
+    $product =Product::findOrFail($id);
+    $customer = Customer::findOrFail(Auth::customer()->user()->id);
+    $wishlist= Wishlist::create([
+      'customer_id' => $customer->id,
+      'product_id' => $product->id,
+      'updated_by' => Auth::customer()->user()->email
+    ]);
+    $items =Wishlist::where('customer_id','=',Auth::customer()->user()->id)->get();
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $products=new \Illuminate\Database\Eloquent\Collection;;
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $products->add($product);
+    }
+    return View::make('home.wishlist',compact('products','categories'));
+    
+  }
+  public function wishlist(){
+    $items =Wishlist::where('customer_id','=',Auth::customer()->user()->id)->get();
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $products=new \Illuminate\Database\Eloquent\Collection;;
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $products->add($product);
+    }
+    return View::make('home.wishlist',compact('products','categories'));
+  }
+  
+  public function remove_wishlist_item($id){
+    $wish =Wishlist::where('customer_id','=',Auth::customer()->user()->id)->where('product_id','=',$id)->first();
+    Wishlist::destroy($wish->id);
+    $items =Wishlist::where('customer_id','=',Auth::customer()->user()->id)->get();
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $products=new \Illuminate\Database\Eloquent\Collection;;
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $products->add($product);
+    }
+    return View::make('home.wishlist',compact('products','categories'));
+  }
 
 }

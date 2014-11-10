@@ -32,7 +32,7 @@
                           {{ Form::close() }}
                         </li>
                         <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li><a href="#">My WishList</a></li>
+                        <li><a href="{{ URL::to('wishlist')}}">My WishList</a></li>
                         <li><a href="{{ URL::to('signout') }}">{{Auth::customer()->user()->name }}, Not You? Sign Out</a></li>
                       </ul>
                   </div>
