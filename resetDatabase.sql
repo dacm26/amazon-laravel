@@ -1,2 +1,2 @@
-drop database amazon;
-create database amazon;
+USE amazon;
+DELETE FROM customers;

@@ -114,6 +114,9 @@
                                 <li>
                                     <a href="{{ URL::route('products.create') }}">Create Product</a>
                                 </li>
+                                 <li>
+                                    <a href="{{ URL::route('products.trending') }}">Trending Products</a>
+                                </li>                             
                             </ul>
                         </li>
                         <li>
@@ -123,7 +126,7 @@
                                     <a href="{{ URL::route('categories.index') }}">List Categories</a>
                                 </li>
                                 <li>
-                                    <a href="{{ URL::route('categories.create') }}">Create Categorie</a>
+                                    <a href="{{ URL::route('categories.create') }}">Create Category</a>
                                 </li>
                             </ul>
                         </li>
