@@ -39,6 +39,8 @@ Route::group(array('before'=>'auth.employee'), function() {
 Route::group(array('before'=>'auth.customer'), function() { 
   Route::get('signout', 'CustomersSessionsController@destroy');
   Route::get('index', array('as' => 'home.index', 'uses' => 'HomeController@index'));
+  Route::get('search', array('as' => 'home.search', 'uses' => 'HomeController@search'));
+  Route::get('show/{products}', array('as' => 'home.show', 'uses' => 'HomeController@show'));
 });
 
 Route::get('login', 'SessionsController@create');

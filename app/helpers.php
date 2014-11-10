@@ -98,3 +98,7 @@ function link_to_edit_tax(Tax $tax){
   return link_to_route('taxes.edit','Edit',[$tax->id]);
 }
 
+function link_to_product(Product $product){
+  return link_to_route('home.show','Show Details',[$product->id]);
+}
+
