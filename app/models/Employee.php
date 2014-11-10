@@ -16,17 +16,17 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = [
     
     'create' => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
-           'email' => 'required|email|Unique:employees',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:10,70',
+           'email' => 'required|email|Unique:employees|between:10,70',
            'birthday' => 'required',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:employees',
            'gender' => 'required',
-           'password' => 'required',
+           'password' => 'required|between:6,25',
            'role_id' => 'required' 
         ],
     'edit'   => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
-           'email' => 'required|email',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:10,70',
+           'email' => 'required|email|between:10,70',
            'birthday' => 'required',
            'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
            'role_id' => 'required' 

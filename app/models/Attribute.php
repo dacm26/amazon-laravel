@@ -1,11 +1,11 @@
-<?php
+|between:10,70<?php
 
 class Attribute extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		 'name' => 'required',
-     'value' => 'required',
+		 'name' => 'required|between:10,70',
+     'value' => 'required|between:10,40',
      'category_id' => 'required'
 	];
 
