@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class DiscountsController extends \BaseController {
 
   /**
@@ -16,21 +16,7 @@ class DiscountsController extends \BaseController {
     $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
     return View::make('discounts.index', compact('discounts','categories','brands'));
   }
-  /**
-  ***************
-  public function search()
-  {
-    $keyword = Input::get('keyword');
-    if(!($keyword == '')){
-      $discounts=Discount::where('name','LIKE','%'.$keyword.'%')->get();  
-    }
-    else{
-     $discounts = Discount::where('inactive', '=', 0)->get();
-    }
-    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
-    $brands = Brand::where('inactive','=','false')->get()->lists('name','id');
-    return View::make('discounts.index', compact('discounts','categories','brands'));
-  }
+
   /**
    * Show the form for creating a new discount
    *
@@ -51,7 +37,14 @@ class DiscountsController extends \BaseController {
   public function store()
   {
     $validator = Validator::make($data = Input::all(), Discount::$rules['create']);
-
+    $start=new Carbon(Input::get('datestart'));
+    $end=new Carbon(Input::get('dateend'));
+    $today= Carbon::now();
+    
+    if ($validator->fails() or ($start > $end) or ($start < $today))
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 
     $discount = new Discount(Input::all());
     $discount->updated_by=Auth::employee()->user()->email;
@@ -97,9 +90,14 @@ class DiscountsController extends \BaseController {
   {
     try{
     $discount = Discount::findOrFail($id);
-
+    $start=new Carbon(Input::get('datestart'));
+    $end=new Carbon(Input::get('dateend'));
+    $today= Carbon::now();
     $validator = Validator::make($data = Input::all(), Discount::$rules['edit']);
-
+    if ($validator->fails() or ($start > $end) or ($start < $today))
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 
     $discount->update($data);
     $discount->updated_by=Auth::employee()->user()->email;

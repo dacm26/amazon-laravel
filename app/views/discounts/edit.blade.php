@@ -8,7 +8,7 @@
           
            <div class="form-group">
             {{ Form::label('discount','Discount: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::number('discount',$discount->discount,['class' => 'form-control']) }}
+            {{ Form::text('discount',$discount->discount,array('placeholder'=>'10.50','class' => 'form-control')) }}
             {{ $errors->first('discount') }}
           </div>
 
