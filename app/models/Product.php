@@ -26,7 +26,8 @@ class Product extends \Eloquent {
 
 	// Don't forget to fill this array
 	protected $guarded = ['id'];
-   protected $defaults = array(
+
+  protected $defaults = array(
      'inactive' => false,
      'visits' => 0,
   );

@@ -98,7 +98,20 @@ function link_to_edit_tax(Tax $tax){
   return link_to_route('taxes.edit','Edit',[$tax->id]);
 }
 
+
+function link_to_show_discount(Discount $discount){
+  return link_to_route('discounts.show','Show',[$discount->id]);
+}
+
+function link_to_edit_discount(Discount $discount){
+  return link_to_route('discounts.edit','Edit',[$discount->id]);
+}
+
+function link_to_create_discount(){
+  return link_to_route('discounts.create','Create an Discount');
+}
+
 function link_to_product(Product $product){
   return link_to_route('home.show','Show Details',[$product->id]);
 }
-
+  
