@@ -32,10 +32,8 @@ class AddWishlist extends Migration {
 	 */
 	public function down()
 	{
-		Schema::create('wishlists', function(Blueprint $table)
-		{
+
 			Schema::drop('wishlists');
-		});
 	}
 
 }
