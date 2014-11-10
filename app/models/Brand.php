@@ -32,5 +32,10 @@ class Brand extends \Eloquent {
     return $this->hasMany('Product');
   }
   
+    public function discounts()
+  {
+    return $this->hasMany('Discount');
+  }
+  
 
 }

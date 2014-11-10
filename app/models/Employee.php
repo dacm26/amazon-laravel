@@ -38,7 +38,7 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
   
   protected $defaults = array(
      'inactive' => false,
-     'updated_by' => ' '
+      'updated_by'=>' '
   );
 
   public function __construct(array $attributes = array())
