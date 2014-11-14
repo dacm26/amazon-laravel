@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://projects-157441.sae1.nitrousbox.com:4000/" />
+<title>ShippersTest_AceptanceCriteria</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ShippersTest_AceptanceCriteria</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=Shippers</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create Shipper</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=p.formLabel.formTop</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>dark@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>dark123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.login.pull-right</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>shipper</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name must be between 10 and 70 characters.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Shipper International</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Mobile: The mobile field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobile</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Mobile: The mobile format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobile</td>
+	<td>asdf</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Mobile: The mobile format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobile</td>
+	<td>3001</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Mobile: The mobile must be between 8 and 15 characters.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobile</td>
+	<td>32200000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Mobile:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Email: The email field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>asdf</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>shipperinternational@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Email:</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=percentage</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[4]</td>
+	<td>Porcentage: The percentage format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=percentage</td>
+	<td>asdf</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[4]</td>
+	<td>Porcentage: The percentage format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=percentage</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[4]</td>
+	<td>Porcentage: The percentage format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=percentage</td>
+	<td>10.00</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/div/div/div/table/tbody/tr/td[2]</td>
+	<td>Shipper International</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='wrapper']/nav/ul/li[2]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=formWrapper</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
