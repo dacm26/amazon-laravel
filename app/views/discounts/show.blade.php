@@ -10,12 +10,12 @@
 </p>
 
 <p>
-  <strong>Date start:</strong>
+  <strong>Start Date:</strong>
   {{ $discount->datestart }}
 </p>
 
 <p>
-  <strong>Date end:</strong>
+  <strong>End Date:</strong>
   {{ $discount->dateend }}
 </p>
 
