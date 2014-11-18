@@ -50,7 +50,9 @@ Route::group(array('before'=>'auth.customer'), function() {
   Route::delete('/wishlist/{products}',array('as' => 'home.remove_wishlist_item', 'uses' => 'HomeController@remove_wishlist_item'));
   Route::get('cart', array('as' => 'home.cart', 'uses' => 'HomeController@cart'));
   Route::post('/cart/{products}',array('as' => 'home.add_to_cart', 'uses' => 'HomeController@add_to_cart'));
-  Route::delete('/cart/{products}',array('as' => 'home.remove_cart_item', 'uses' => 'HomeController@remove_cart_item'));  
+  Route::delete('/cart/{products}',array('as' => 'home.remove_cart_item', 'uses' => 'HomeController@remove_cart_item'));
+  Route::get('/cards/create',array('as' => 'home.add_card', 'uses' => 'HomeController@add_card'));
+  Route::post('/cards',array('as' => 'home.store_card', 'uses' => 'HomeController@store_card'));
 });
 
 Route::get('login', 'SessionsController@create');

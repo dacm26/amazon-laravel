@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class HomeController extends BaseController {
 
 	/*
@@ -143,6 +143,39 @@ class HomeController extends BaseController {
       $products->add($product);
     }
     return View::make('home.cart',compact('products','categories','total'));
-  }  
+  }
+  public function add_card(){
+    
+    $cards=Card::where('customer_id','=',Auth::customer()->user()->id)->get()->lists('name','id');
+    if($cards){
+      return $cards;
+    }
+    else{
+          $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+          return View::make('home.card',compact('categories'));
+    }
+
+  }
+  
+  public function store_card(){
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $month=Input::get('month');
+    $year=Input::get('year');
+    $day=15;
+    $tz=Carbon::now()->tzName;
+    $date=Carbon::createFromDate($year, $month, $day, $tz);
+    $card= Card::create([
+      'name' => Input::get('name'),
+      'number' => Input::get('number'),
+      'code' => Input::get('code'),
+      'customer_id' => Auth::customer()->user()->id,
+      'balance' => 1000.00,
+      'frozen_balance' => 0.00,
+      'expiration_date' =>$date,
+      'updated_by' => Auth::customer()->user()->email
+    ]);
+    $card->save();
+    return $card;
+  }
 
 }

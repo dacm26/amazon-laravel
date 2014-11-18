@@ -84,7 +84,9 @@
     <div class="row">
       <div class="span12 cnt-title">
         <h2>Total Sale: <b>$ {{ $total }}</b></h2>
-        <button type="button" class="btn btn-success"><b>Buy Now</b></button>
+        {{ Form::open(array('route' => array('home.add_card'),'class'=>'navbar-form navbar-left', 'method' => 'get')) }}
+                        {{ Form::submit('Buy Now',['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
       </div>
     </div>
 </div>
