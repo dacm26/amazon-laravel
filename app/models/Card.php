@@ -8,7 +8,7 @@ class Card extends \Eloquent {
 	public static $rules = [
 		    'create' => [
            'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:4,70',
-           'number' => 'required|between:16,20',
+           'number' => 'required|Unique:cards|between:16,20',
            'code' => 'required|between:3,5'
         ]
 	];

@@ -53,6 +53,8 @@ Route::group(array('before'=>'auth.customer'), function() {
   Route::delete('/cart/{products}',array('as' => 'home.remove_cart_item', 'uses' => 'HomeController@remove_cart_item'));
   Route::get('/cards/create',array('as' => 'home.add_card', 'uses' => 'HomeController@add_card'));
   Route::post('/cards',array('as' => 'home.store_card', 'uses' => 'HomeController@store_card'));
+  Route::get('/orders/create',array('as' => 'home.add_order', 'uses' => 'HomeController@add_order'));
+  Route::post('/orders',array('as' => 'home.store_order', 'uses' => 'HomeController@store_order'));
 });
 
 Route::get('login', 'SessionsController@create');

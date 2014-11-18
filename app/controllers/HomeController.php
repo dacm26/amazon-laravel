@@ -1,6 +1,8 @@
 <?php
 use Carbon\Carbon;
 class HomeController extends BaseController {
+  
+  private static $shipper_id;
 
 	/*
 	|--------------------------------------------------------------------------
@@ -148,7 +150,7 @@ class HomeController extends BaseController {
     
     $cards=Card::where('customer_id','=',Auth::customer()->user()->id)->get()->lists('name','id');
     if($cards){
-      return $cards;
+     return Redirect::to('orders/create');
     }
     else{
           $categories = Category::where('inactive','=','false')->get()->lists('name','id');
@@ -180,7 +182,76 @@ class HomeController extends BaseController {
       'updated_by' => Auth::customer()->user()->email
     ]);
     $card->save();
-    return $card;
+    return Redirect::to('orders/create');
+  }
+  public function add_order(){
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    
+    $shipper = (Shipper::where('inactive','=','false')->orderByRaw("RAND()")->first());//multiplicar por el total
+    $shipping = ($shipper->percentage)/100;
+    $taxes = (Tax::all()->first());//multiplicar por el total
+    $tax = ($taxes->value)/100;
+    $items =Cart::where('customer_id','=',Auth::customer()->user()->id)->get();
+    $products=new \Illuminate\Database\Eloquent\Collection;
+    $sub_total=0;
+    $total=0;
+    $total_discount=0;
+    $discount=0;
+    $now=Carbon::now();
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $brand=Brand::findOrFail($product->brand_id);
+      $category=Category::findOrFail($product->category_id);
+      $discounts=Discount::where('inactive','=','false')->where('category_id','=',$category->id)->where('brand_id','=',$brand->id)->get();
+      foreach($discounts as $disc){
+        $temp_date=new Carbon($disc->dateend);
+          if($now<=$temp_date){
+              $discount=$disc->discount;
+              break;
+          }
+      }
+      $discount=($discount/100)*$product->price;
+      $total_discount+=$discount;
+      $sub_total+=$product->price;
+      $products->add($product);
+    }
+    
+    if($products->isEmpty()){
+      return Redirect::to('cart');
+    }
+    $shipping=$shipping*$sub_total;
+    $total=$sub_total+$shipping-$total_discount;
+    $tax= $tax*$total;
+    return View::make('home.order',compact('categories','sub_total','total','shipping','tax','total_discount','shipper'));
+  }
+  public function store_order(){
+    $date=Carbon::now();
+    $card=Card::where('customer_id','=',Auth::customer()->user()->id)->first();
+    if($card->balance < Input::get('total')){
+      return Redirect::to('cart');
+    }
+    $order= Order::create([
+      'order_date' => $date,
+      'customer_id' => Auth::customer()->user()->id,
+      'shipper_id' => Input::get('shipper'),
+      'updated_by' => Auth::customer()->user()->email
+    ]);
+    $items =Cart::where('customer_id','=',Auth::customer()->user()->id)->get();
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $temp=OrderDetails::create([
+        'order_id' => $order->id,
+        'product_id' => $product->id,
+        'quantity' => 1
+      ]);
+    }
+    $card->balance=$card->balance-Input::get('total');
+    $card->frozen_balance=$card->frozen_balance+Input::get('total');
+    $card->save();
+    Cart::where('customer_id','=',Auth::customer()->user()->id)->delete();
+    return Redirect::to('cart');
   }
 
 }
