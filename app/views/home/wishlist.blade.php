@@ -33,6 +33,7 @@
                         </li>
                         <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
                         <li><a href="{{ URL::to('wishlist')}}">My WishList</a></li>
+                        <li><a href="{{ URL::to('cart')}}">My Shopping Cart</a></li>
                         <li><a href="{{ URL::to('signout') }}">{{Auth::customer()->user()->name }}, Not You? Sign Out</a></li>
                       </ul>
                   </div>
@@ -65,10 +66,11 @@
             <b>{{ $product->name}}</b>
           </h3> 
           <h4>Price: <b>${{ $product->price }}</b></h4>
-          <a href="#" class="btn" type="button">Add To Cart</a>
+           {{ link_to_product($product) }}
+           
                    {{ Form::open(array('route' => array('home.remove_wishlist_item', $product->id),'class'=>'navbar-form navbar-left', 'method' => 'delete')) }}
-              {{ Form::submit('Remove',['class' => 'btn btn-danger']) }}
-        {{ Form::close() }}
+                        {{ Form::submit('Remove',['class' => 'btn btn-danger']) }}
+                   {{ Form::close() }}
         </div>
       </div>
     </div> 

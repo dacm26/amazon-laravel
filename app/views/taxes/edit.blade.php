@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-      <h1 class="page-header">Edit Shipper</h1>
+      <h1 class="page-header">Edit Tax</h1>
       <br>
       {{ Form::open(array('route' => array('taxes.update', $tax->id),'class'=>'form', 'method' => 'put')) }}
           <div class="form-group">

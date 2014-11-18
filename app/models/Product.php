@@ -51,4 +51,8 @@ class Product extends \Eloquent {
   {
     return $this->belongsTo('Wishlist');
   }
+  public function cart()
+  {
+    return $this->belongsTo('Cart');
+  }  
 }

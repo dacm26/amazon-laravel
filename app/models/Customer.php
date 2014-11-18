@@ -66,5 +66,13 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
   {
     return $this->belongsTo('Wishlist');
   }
+    public function cart()
+  {
+    return $this->belongsTo('Cart');
+  }
+    public function cards()
+  {
+    return $this->hasMany('Card');
+  }
   
 }
