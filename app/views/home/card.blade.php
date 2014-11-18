@@ -226,7 +226,7 @@
              </div>
              <div class="form-item">
                 <p class="formLabel">Card Number:</p><br>
-                {{ Form::text('number',"",array('style' => 'position:relative; height:50px; width:300px; text-align:right; font-size:18px;','class'=>'cc','placeholder'=>'XXXX XXXX XXXX XXXX','onkeypress'=>'return soloNumeros(event)')) }}
+                {{ Form::text('number',"",array('style' => 'position:relative; height:50px; width:300px; text-align:right; font-size:18px;','class'=>'cc','placeholder'=>'XXXXXXXXXXXXXXXX','onkeypress'=>'return soloNumeros(event)')) }}
                 {{ $errors->first('number') }}
              </div>
              <div class="form-item">

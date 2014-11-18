@@ -18,7 +18,7 @@ class AddCards extends Migration {
       $table->string('name');
       $table->bigInteger('number')->unique();
       $table->date('expiration_date');
-      $table->bigInteger('code');
+      $table->smallInteger('code');
       $table->double('balance');
       $table->double('frozen_balance');
       $table->unsignedInteger('customer_id');
