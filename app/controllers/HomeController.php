@@ -241,6 +241,8 @@ class HomeController extends BaseController {
     foreach($items as $item)
     {
       $product=Product::findOrFail($item->product_id);
+      $product->units_in_stock=$product->units_in_stock-1;
+      $product->save();
       $temp=OrderDetails::create([
         'order_id' => $order->id,
         'product_id' => $product->id,
