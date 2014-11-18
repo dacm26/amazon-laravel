@@ -158,6 +158,11 @@ class HomeController extends BaseController {
   }
   
   public function store_card(){
+    $validator = Validator::make( Input::all(), Card::$rules['create'] ); 
+
+    if ( $validator->fails()) { 
+        return Redirect::back()->withErrors($validator)->withInput();
+    }
     $categories = Category::where('inactive','=','false')->get()->lists('name','id');
     $month=Input::get('month');
     $year=Input::get('year');
