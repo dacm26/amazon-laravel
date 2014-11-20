@@ -206,7 +206,8 @@ class HomeController extends BaseController {
       $discounts=Discount::where('inactive','=','false')->where('category_id','=',$category->id)->where('brand_id','=',$brand->id)->get();
       foreach($discounts as $disc){
         $temp_date=new Carbon($disc->dateend);
-          if($now<=$temp_date){
+        $temp_date2=new Carbon($disc->datestart);
+          if($temp_date2<=$now and $now<=$temp_date){
               $discount=$disc->discount;
               break;
           }
