@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://projects-157441.sae1.nitrousbox.com:4000/" />
+<title>ProductsTest_AceptanceCriteria</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ProductsTest_AceptanceCriteria</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=email</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>dark@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>dark123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.login.pull-right</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Products</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create Product</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>p1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name: The name must be between 3 and 70 characters.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Product 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Name:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Code: The code field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=code</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Code: The code format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=code</td>
+	<td>cod</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Code: The code must be between 5 and 12 characters.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=code</td>
+	<td>PTEST01</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Code:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Price: The price field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Price: The price format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>asdasd</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Price: The price format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Price: The price format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>99.99</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Price:</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=units_in_stock</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[4]</td>
+	<td>Units in Stock:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[5]</td>
+	<td>Threshold: The threshold field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=threshold</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

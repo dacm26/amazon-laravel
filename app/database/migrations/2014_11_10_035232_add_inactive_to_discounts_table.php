@@ -22,9 +22,6 @@ class AddInactiveToDiscountsTable extends Migration {
 		Schema::table('discounts', function($table)
     {
       $table->boolean('inactive')->after('discount');
-    });
-   Schema::table('discounts', function($table)
-    {
       $table->string('updated_by')->after('updated_at');
     });
     
@@ -41,10 +38,6 @@ class AddInactiveToDiscountsTable extends Migration {
 		Schema::table('discounts', function($table)
     {
         $table->dropColumn('inactive');
-    });
-    
-        Schema::table('discounts', function($table)
-    {
         $table->dropColumn('updated_by');
     });
 	}

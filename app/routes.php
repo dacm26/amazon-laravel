@@ -35,6 +35,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::post('/employees/search','EmployeesController@search');
   Route::post('/shippers/search','ShippersController@search');
   Route::post('/products/search','ProductsController@search');
+  Route::get('/trending/products',array('as' => 'products.trending', 'uses' => 'ProductsController@trending'));
   
   
 });
@@ -42,6 +43,18 @@ Route::group(array('before'=>'auth.employee'), function() {
 Route::group(array('before'=>'auth.customer'), function() { 
   Route::get('signout', 'CustomersSessionsController@destroy');
   Route::get('index', array('as' => 'home.index', 'uses' => 'HomeController@index'));
+  Route::get('search', array('as' => 'home.search', 'uses' => 'HomeController@search'));
+  Route::get('show/{products}', array('as' => 'home.show', 'uses' => 'HomeController@show'));
+  Route::get('wishlist', array('as' => 'home.wishlist', 'uses' => 'HomeController@wishlist'));
+  Route::post('/wishlist/{products}',array('as' => 'home.add_to_wishlist', 'uses' => 'HomeController@add_to_wishlist'));
+  Route::delete('/wishlist/{products}',array('as' => 'home.remove_wishlist_item', 'uses' => 'HomeController@remove_wishlist_item'));
+  Route::get('cart', array('as' => 'home.cart', 'uses' => 'HomeController@cart'));
+  Route::post('/cart/{products}',array('as' => 'home.add_to_cart', 'uses' => 'HomeController@add_to_cart'));
+  Route::delete('/cart/{products}',array('as' => 'home.remove_cart_item', 'uses' => 'HomeController@remove_cart_item'));
+  Route::get('/cards/create',array('as' => 'home.add_card', 'uses' => 'HomeController@add_card'));
+  Route::post('/cards',array('as' => 'home.store_card', 'uses' => 'HomeController@store_card'));
+  Route::get('/orders/create',array('as' => 'home.add_order', 'uses' => 'HomeController@add_order'));
+  Route::post('/orders',array('as' => 'home.store_order', 'uses' => 'HomeController@store_order'));
 });
 
 Route::get('login', 'SessionsController@create');

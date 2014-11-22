@@ -8,18 +8,18 @@
 
            <div class="form-group">
             {{ Form::label('discount','Discount: ',['class' => 'exampleInputEmail1']) }}
-            {{ Form::number('discount',"",['class' => 'form-control']) }}
+            {{ Form::text('discount',"",array('placeholder'=>'10.50','class' => 'form-control')) }}
             {{ $errors->first('discount') }}
           </div>
 
           <div class="form-group">
-            {{ Form::label('datestart','Date start: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::label('datestart','Start Date: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::input('date', 'datestart', null, ['class' => 'form-control', 'placeholder' => 'Date']) }}
             {{ $errors->first('datestart') }}
           </div>     
 
           <div class="form-group">
-            {{ Form::label('dateend','Date end: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::label('dateend','End Date: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::input('date', 'dateend', null, ['class' => 'form-control', 'placeholder' => 'Date']) }}
             {{ $errors->first('dateend') }}
           </div>  

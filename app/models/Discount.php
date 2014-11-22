@@ -6,7 +6,7 @@ class Discount extends \Eloquent {
   	// Add your validation rules here
 	public static $rules = [
     'create' => [
-              'discount' => 'required',
+              'discount' => 'required|regex:/^([0-9]{1,2}\.[0-9]{2})$/',
               'datestart' => 'required',
               'dateend' => 'required',
               'brand_id' => 'required',
@@ -14,7 +14,7 @@ class Discount extends \Eloquent {
         ],
     
    'edit'   => [
-              'discount' => 'required',
+              'discount' => 'required|regex:/^([0-9]{1,2}\.[0-9]{2})$/',
               'datestart' => 'required',
               'dateend' => 'required',
               'brand_id' => 'required',

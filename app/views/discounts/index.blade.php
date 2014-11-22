@@ -8,16 +8,6 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
-                        <div class="container col-sm-10">
-              {{ Form::open(array('url' => '/discounts/search','class'=>'form')) }}
-                  <div class="container col-sm-7">
-                        {{ Form::text('keyword',null,array('placeholder'=>'Search','class' => 'form-control')) }}
-                  </div>
-                  <div class="container col-sm-3">
-                        {{ Form::submit('Search',['class' => 'btn btn-info']) }}
-                  </div>
-              {{ Form::close() }}
-            </div>
             <table class="table table-hover">
        <thead>
            <tr>

@@ -5,18 +5,18 @@ class Product extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
      'create'   => [
-        'name' => 'required|regex:/^(([\w]+)[\s]*)+$/|Unique:products',
+        'name' => 'required|regex:/^(([\w]+)[\s]*)+$/|Unique:products|between:3,70',
         'price' => 'required|regex:/^([0-9]{1,3}\.[0-9]{2})$/',
-        'code' => 'required|regex:/^([\w]+)$/|Unique:products',
-        'units_in_stock' => 'required|regex:/^\+?[\d]+$/',
-        'threshold' => 'required|regex:/^\+?[\d]+$/'
+        'code' => 'required|regex:/^([\w]+)$/|Unique:products|between:5,12',
+        'units_in_stock' => 'required|regex:/^\+?[\d]+$/|between:2,10',
+        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10'
         ],
 		 'edit'   => [
-        'name' => 'required|regex:/^(([\w]+)[\s]*)+$/',
+        'name' => 'required|regex:/^(([\w]+)[\s]*)+$/|between:3,70',
         'price' => 'required|regex:/^([0-9]{1,3}\.[0-9]{2})$/',
-        'code' => 'required|regex:/^([\w]+)$/',
-        'units_in_stock' => 'required|regex:/^\+?[\d]+$/',
-        'threshold' => 'required|regex:/^\+?[\d]+$/'
+        'code' => 'required|regex:/^([\w]+)$/|between:5,12',
+        'units_in_stock' => 'required|regex:/^\+?[\d]+$/|between:2,10',
+        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10'
         ],
     
     'destroy'   => [
@@ -29,6 +29,7 @@ class Product extends \Eloquent {
 
   protected $defaults = array(
      'inactive' => false,
+     'visits' => 0,
   );
 
   public function __construct(array $attributes = array())
@@ -45,5 +46,13 @@ class Product extends \Eloquent {
   {
     return $this->belongsTo('Brand');
   }
-
+  
+  public function wishlist()
+  {
+    return $this->belongsTo('Wishlist');
+  }
+  public function cart()
+  {
+    return $this->belongsTo('Cart');
+  }  
 }

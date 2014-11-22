@@ -110,3 +110,8 @@ function link_to_edit_discount(Discount $discount){
 function link_to_create_discount(){
   return link_to_route('discounts.create','Create an Discount');
 }
+
+function link_to_product(Product $product){
+  return link_to_route('home.show','Show Details',[$product->id]);
+}
+  

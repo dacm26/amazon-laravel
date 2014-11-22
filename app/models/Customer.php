@@ -11,21 +11,21 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = [
     
     'create' => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
-           'email' => 'required|email|Unique:customers',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:10,70',
+           'email' => 'required|email|Unique:customers|between:10,70',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:customers',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|Unique:customers|between:8,15',
            'gender' => 'required',
-           'password' => 'required',
-           'address' => 'required',
+           'password' => 'required|between:6,25',
+           'address' => 'required|between:10,100',
            'postal_code' => 'required|regex:/^\+?[\d]{5,15}$/'
         ],
     'edit'   => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/',
-           'email' => 'required|email',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:10,70',
+           'email' => 'required|email|between:10,70',
            'birthday' => 'required',
-           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/',
-           'address' => 'required',
+           'mobile' => 'required|regex:/^\+?[\d]{8,15}$/|between:8,15',
+           'address' => 'required|between:10,100',
            'postal_code' => 'required|regex:/^\+?[\d]{5,15}$/'
         ],
         'destroy'   => [
@@ -62,6 +62,17 @@ class Customer extends Eloquent implements UserInterface, RemindableInterface {
   public function setPasswordAttribute($pass){
       $this->attributes['password'] = Hash::make($pass);
   }
-
+  public function wishlist()
+  {
+    return $this->belongsTo('Wishlist');
+  }
+    public function cart()
+  {
+    return $this->belongsTo('Cart');
+  }
+    public function cards()
+  {
+    return $this->hasMany('Card');
+  }
   
 }

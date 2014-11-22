@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://projects-157441.sae1.nitrousbox.com:4000/" />
+<title>DiscountsTest_AceptanceCriteria</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">DiscountsTest_AceptanceCriteria</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>dark@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>dark123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.login.pull-right</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Discounts</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create Discount</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Discount: The discount field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=discount</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Discount: The discount format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=discount</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Discount: The discount format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=discount</td>
+	<td>asdf</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Discount: The discount format is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=discount</td>
+	<td>11.00</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.form-group</td>
+	<td>Discount:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[2]</td>
+	<td>Date start: The datestart field is required.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/form/div[3]</td>
+	<td>Date end: The dateend field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=datestart</td>
+	<td>2014-12-15</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dateend</td>
+	<td>2014-12-21</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-wrapper']/div/div/div/div/div/table/tbody/tr/td[2]</td>
+	<td>11</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='wrapper']/nav/ul/li[2]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
