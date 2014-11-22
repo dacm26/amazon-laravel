@@ -102,6 +102,7 @@ class HomeController extends BaseController {
     $cart= Cart::create([
       'customer_id' => $customer->id,
       'product_id' => $product->id,
+      'quantity' => Input::get('quantity'),
       'updated_by' => Auth::customer()->user()->email
     ]);
     $items =Cart::where('customer_id','=',Auth::customer()->user()->id)->get();
@@ -111,7 +112,7 @@ class HomeController extends BaseController {
     foreach($items as $item)
     {
       $product=Product::findOrFail($item->product_id);
-      $total+=$product->price;
+      $total+=$product->price*$item->quantity;
       $products->add($product);
     }
     return View::make('home.cart',compact('products','categories','total'));
@@ -125,7 +126,7 @@ class HomeController extends BaseController {
     foreach($items as $item)
     {
       $product=Product::findOrFail($item->product_id);
-      $total+=$product->price;
+      $total+=$product->price*$item->quantity;
       $products->add($product);
     }
     return View::make('home.cart',compact('products','categories','total'));
@@ -141,7 +142,7 @@ class HomeController extends BaseController {
     foreach($items as $item)
     {
       $product=Product::findOrFail($item->product_id);
-      $total+=$product->price;
+      $total+=$product->price*$item->quantity;
       $products->add($product);
     }
     return View::make('home.cart',compact('products','categories','total'));
@@ -212,9 +213,9 @@ class HomeController extends BaseController {
               break;
           }
       }
-      $discount=($discount/100)*$product->price;
+      $discount=($discount/100)*$product->price*$item->quantity;;
       $total_discount+=$discount;
-      $sub_total+=$product->price;
+      $sub_total+=$product->price*$item->quantity;
       $products->add($product);
     }
     

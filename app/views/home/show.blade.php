@@ -56,7 +56,6 @@
       <h3>Code: <b>{{ $product->code}}</b></h3>
       <h3>Category: <b>{{ $category->name}}</b></h3>
       <h3>Units in Stock: <b>{{ $product->units_in_stock}}</b></h3>
-      <h3>Quantity: <b><input type="number" min="1" step="1" id="UnitsInStock"></b></h3>
       <h3>Price: <b><span style="font-size:30px;">${{ $product->price }}</span></b></h3>
       <br>
        @if($check2)
@@ -68,6 +67,8 @@
       @else
             <div style="text-align:center;">
         {{ Form::open(array('route' => array('home.add_to_cart', $product->id),'class'=>'navbar-form navbar-left', 'method' => 'post')) }}
+                    <h3>Quantity: <b>{{ Form::number('quantity', '1',array('min'=>'1','id'=>'UnitsInStock','step'=>'1')) }}</b></h3>
+
               {{ Form::submit('Add To Cart',['class' => 'btn btn-success']) }}
         {{ Form::close() }}
       </div>

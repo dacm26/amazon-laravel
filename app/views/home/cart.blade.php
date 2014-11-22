@@ -66,6 +66,7 @@
             <b>{{ $product->name}}</b>
           </h3> 
           <h4>Price: <b>${{ $product->price }}</b></h4>
+          <h4>Quantity: <b>{{ Cart::where('customer_id','=',Auth::customer()->user()->id)->where('product_id','=',$product->id)->first()->quantity }}</b></h4>
            {{ link_to_product($product) }}
                      
                    {{ Form::open(array('route' => array('home.remove_cart_item', $product->id),'class'=>'navbar-form navbar-left', 'method' => 'delete')) }}
