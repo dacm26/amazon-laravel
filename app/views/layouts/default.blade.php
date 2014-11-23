@@ -198,7 +198,7 @@
                                     <a href="{{ URL::route('sales.index') }}">Sales</a>
                                 </li>
                                 <li>
-                                    <a href="{{ URL::route('pro_cat.index') }}">Products by categories</a>
+                                    <a href="{{ URL::route('pro_cat.index') }}">Sales by categories</a>
                                 </li>
                             </ul> 
                         </li> 

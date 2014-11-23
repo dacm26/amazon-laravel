@@ -42,6 +42,7 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::get('pro_cat', array('as' => 'pro_cat.index', 'uses' => 'QueriesController@pro_cat_index'));
   Route::post('/orders/search','QueriesController@orders_search');
   Route::post('/sales/search','QueriesController@sales_search');
+  Route::post('/pro_cat/search','QueriesController@pro_cat_search');
 });
 
 Route::group(array('before'=>'auth.customer'), function() { 

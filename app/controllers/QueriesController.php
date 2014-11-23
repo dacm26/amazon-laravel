@@ -69,7 +69,39 @@ class QueriesController extends \BaseController {
 	}
 	public function pro_cat_index()
 	{
-		return View::make('queries.pro_cat_index');
-	}  
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    
+    $now=Carbon::today();//Por el formato de las fechas
+    $orders=DB::table('order_details')
+                    ->join('products', 'products.id', '=', 'order_details.product_id')
+                    ->orderBy('category_id', 'asc')
+                    ->where('order_details.created_at','>=',$now)
+                    ->groupBy('category_id')
+                    ->get(array('category_id', DB::raw('sum(quantity) as quantity') ));
+		return View::make('queries.pro_cat_index',compact('orders','categories'));
+	}
+	public function pro_cat_search()
+	{
+    $categories = Category::where('inactive','=','false')->get()->lists('name','id');
+    $start=Input::get('start');
+    $end=Input::get('end');
+    $start=new Carbon($start);
+    $end=new Carbon($end);
+
+    if (($start > $end) )
+		{
+			return Redirect::back()->withInput();
+		}
+    $end->addDay();
+    $orders=DB::table('order_details')
+                    ->join('products', 'products.id', '=', 'order_details.product_id')
+                    ->orderBy('category_id', 'asc')
+                    ->where('order_details.created_at','>=',$start)
+                    ->where('order_details.created_at','<',$end)
+                    ->groupBy('category_id')
+                    ->having('category_id', '=', Input::get('category'))
+                    ->get(array('category_id', DB::raw('sum(quantity) as quantity') ));
+		return View::make('queries.pro_cat_index',compact('orders','categories'));
+	}    
 
 }
