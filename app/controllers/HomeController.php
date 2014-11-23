@@ -151,7 +151,7 @@ class HomeController extends BaseController {
     
     $cards=Card::where('customer_id','=',Auth::customer()->user()->id)->get()->lists('name','id');
     if($cards){
-     return Redirect::to('orders/create');
+     return Redirect::to('order/create');
     }
     else{
           $categories = Category::where('inactive','=','false')->get()->lists('name','id');
@@ -183,7 +183,7 @@ class HomeController extends BaseController {
       'updated_by' => Auth::customer()->user()->email
     ]);
     $card->save();
-    return Redirect::to('orders/create');
+    return Redirect::to('order/create');
   }
   public function add_order(){
     $categories = Category::where('inactive','=','false')->get()->lists('name','id');
@@ -248,7 +248,7 @@ class HomeController extends BaseController {
       $temp=OrderDetails::create([
         'order_id' => $order->id,
         'product_id' => $product->id,
-        'quantity' => 1
+        'quantity' => $item->quantity
       ]);
     }
     $card->balance=$card->balance-Input::get('total');

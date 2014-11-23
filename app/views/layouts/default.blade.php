@@ -187,7 +187,21 @@
                                     <a href="{{ URL::route('discounts.create') }}">Create Discount</a>
                                 </li>
                             </ul> 
-                        </li>                      
+                        </li>
+                        <li>
+                           <a href="#"><i class="glyphicon glyphicon-question-sign"></i> Accounting Queries<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::route('orders.index') }}">List Orders</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('sales.index') }}">Sales</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('pro_cat.index') }}">Products by categories</a>
+                                </li>
+                            </ul> 
+                        </li> 
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

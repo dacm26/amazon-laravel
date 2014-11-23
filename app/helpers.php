@@ -114,4 +114,8 @@ function link_to_create_discount(){
 function link_to_product(Product $product){
   return link_to_route('home.show','Show Details',[$product->id]);
 }
+
+function link_to_show_order(Order $order){
+  return link_to_route('orders.show','Show',[$order->id]);
+}
   
