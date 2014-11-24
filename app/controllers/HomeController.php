@@ -1,7 +1,11 @@
 <?php
 use Carbon\Carbon;
+use Acme\Mailers\UserMailer as Mailer;
 class HomeController extends BaseController {
-  
+  protected $mailer;
+  public function __construct(Mailer $mailer ){
+    $this->mailer = $mailer;
+  }
   private static $shipper_id;
 
 	/*
@@ -97,8 +101,11 @@ class HomeController extends BaseController {
   }
 
   public function add_to_cart($id){
+    
+    
     $product =Product::findOrFail($id);
     $customer = Customer::findOrFail(Auth::customer()->user()->id);
+
     $cart= Cart::create([
       'customer_id' => $customer->id,
       'product_id' => $product->id,
@@ -114,6 +121,7 @@ class HomeController extends BaseController {
       $total+=$product->price;
       $products->add($product);
     }
+
     return View::make('home.cart',compact('products','categories','total'));
     
   }
@@ -226,6 +234,8 @@ class HomeController extends BaseController {
     $tax= $tax*$total;
     return View::make('home.order',compact('categories','sub_total','total','shipping','tax','total_discount','shipper'));
   }
+  
+  
   public function store_order(){
     $date=Carbon::now();
     $card=Card::where('customer_id','=',Auth::customer()->user()->id)->first();
@@ -253,7 +263,15 @@ class HomeController extends BaseController {
     $card->balance=$card->balance-Input::get('total');
     $card->frozen_balance=$card->frozen_balance+Input::get('total');
     $card->save();
+    /*email
+    */
+    $customer = Customer::findOrFail(Auth::customer()->user()->id);
+    $usermailer = Customer::find($customer->id);
+    $this->mailer->welcome($usermailer,Input::get('total'),$items,Input::get('shipper'));
+    /*Mailer
+    */
     Cart::where('customer_id','=',Auth::customer()->user()->id)->delete();
+    
     return Redirect::to('cart');
   }
 
