@@ -36,8 +36,13 @@ Route::group(array('before'=>'auth.employee'), function() {
   Route::post('/shippers/search','ShippersController@search');
   Route::post('/products/search','ProductsController@search');
   Route::get('/trending/products',array('as' => 'products.trending', 'uses' => 'ProductsController@trending'));
-  
-  
+  Route::get('orders', array('as' => 'orders.index', 'uses' => 'QueriesController@orders_index'));
+  Route::get('orders/{orders}', array('as' => 'orders.show', 'uses' => 'QueriesController@orders_show'));
+  Route::get('sales', array('as' => 'sales.index', 'uses' => 'QueriesController@sales_index'));
+  Route::get('pro_cat', array('as' => 'pro_cat.index', 'uses' => 'QueriesController@pro_cat_index'));
+  Route::post('/orders/search','QueriesController@orders_search');
+  Route::post('/sales/search','QueriesController@sales_search');
+  Route::post('/pro_cat/search','QueriesController@pro_cat_search');
 });
 
 Route::group(array('before'=>'auth.customer'), function() { 
@@ -53,8 +58,8 @@ Route::group(array('before'=>'auth.customer'), function() {
   Route::delete('/cart/{products}',array('as' => 'home.remove_cart_item', 'uses' => 'HomeController@remove_cart_item'));
   Route::get('/cards/create',array('as' => 'home.add_card', 'uses' => 'HomeController@add_card'));
   Route::post('/cards',array('as' => 'home.store_card', 'uses' => 'HomeController@store_card'));
-  Route::get('/orders/create',array('as' => 'home.add_order', 'uses' => 'HomeController@add_order'));
-  Route::post('/orders',array('as' => 'home.store_order', 'uses' => 'HomeController@store_order'));
+  Route::get('/order/create',array('as' => 'home.add_order', 'uses' => 'HomeController@add_order'));
+  Route::post('/order',array('as' => 'home.store_order', 'uses' => 'HomeController@store_order'));
 });
 
 Route::get('login', 'SessionsController@create');
