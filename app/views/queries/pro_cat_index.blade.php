@@ -43,5 +43,9 @@
         </table>
           </div>
         </div>
+      @if(  $show  )
+        <h3 style="text-align:right">Total Sales: <b>$ {{ $total }}</b></h3>
+      @endif
+      
       </div> 
 @stop

@@ -20,14 +20,28 @@ class QueriesController extends \BaseController {
 			return Redirect::back()->withInput();
 		}
     $keyword=Input::get('keyword');
-    $customer=Customer::where('name','LIKE','%'.$keyword.'%')->first();
-    $orders=Order::where('customer_id','=',$customer->id)->where('order_date','>=',$start)->where('order_date','<=',$end)->get();
+    $customers=Customer::where('name','LIKE','%'.$keyword.'%')->orderBy('name','asc')->get();
+    $orders=new \Illuminate\Database\Eloquent\Collection;;
+    foreach($customers as $customer)
+    {
+      $temp=Order::where('customer_id','=',$customer->id)->where('order_date','>=',$start)->where('order_date','<=',$end)->get();
+      foreach($temp as $t){
+        $orders->add($t);
+      }
+      
+    }
+    
     return View::make('queries.orders_index',compact('orders'));
   }
     public function orders_show($id)
 	{
     $order = Order::findOrFail($id);
-    return $order;
+    $details = OrderDetails::where('order_id','=',$id)->get();
+    $total=0;
+    foreach($details as $detail){
+      $total+=$detail->quantity*Product::findOrFail($detail->product_id)->price;
+    }
+    return View::make('queries.show',compact('order','details','total'));;
   }
 	public function sales_index()
 	{
@@ -78,7 +92,8 @@ class QueriesController extends \BaseController {
                     ->where('order_details.created_at','>=',$now)
                     ->groupBy('category_id')
                     ->get(array('category_id', DB::raw('sum(quantity) as quantity') ));
-		return View::make('queries.pro_cat_index',compact('orders','categories'));
+    $show=false;
+		return View::make('queries.pro_cat_index',compact('orders','categories','show'));
 	}
 	public function pro_cat_search()
 	{
@@ -101,7 +116,20 @@ class QueriesController extends \BaseController {
                     ->groupBy('category_id')
                     ->having('category_id', '=', Input::get('category'))
                     ->get(array('category_id', DB::raw('sum(quantity) as quantity') ));
-		return View::make('queries.pro_cat_index',compact('orders','categories'));
+    $temp=DB::table('order_details')
+                    ->join('products', 'products.id', '=', 'order_details.product_id')
+                    ->orderBy('category_id', 'asc')
+                    ->where('order_details.created_at','>=',$start)
+                    ->where('order_details.created_at','<',$end)
+                    ->where('category_id', '=', Input::get('category'))
+                    ->groupBy('product_id')
+                    ->get(array('product_id', DB::raw('sum(quantity) as quantity') ));
+    $total=0;
+    foreach($temp as $t){
+      $total+=$t->quantity*Product::findOrFail($t->product_id)->price;
+    }
+    $show=true;
+		return View::make('queries.pro_cat_index',compact('orders','categories','total','show'));
 	}    
 
 }
