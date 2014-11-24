@@ -237,7 +237,18 @@ class HomeController extends BaseController {
     $date=Carbon::now();
     $today=Carbon::today();
     $card=Card::where('customer_id','=',Auth::customer()->user()->id)->first();
-    if(($card->balance < Input::get('total')) or ($card->expiration_date <= $today) or ($card->inactive) ){
+    $items =Cart::where('customer_id','=',Auth::customer()->user()->id)->get();
+    $no_units_in_stock=false;
+    foreach($items as $item)
+    {
+      $product=Product::findOrFail($item->product_id);
+      $temp=$product->units_in_stock-$item->quantity;
+      if($temp <0){
+        $no_units_in_stock=true;
+        break;
+      }
+    }
+    if(($card->balance < Input::get('total')) or ($card->expiration_date <= $today) or ($card->inactive) or  ($no_units_in_stock) ){
       return Redirect::to('cart');
     }
     $order= Order::create([
@@ -246,7 +257,7 @@ class HomeController extends BaseController {
       'shipper_id' => Input::get('shipper'),
       'updated_by' => Auth::customer()->user()->email
     ]);
-    $items =Cart::where('customer_id','=',Auth::customer()->user()->id)->get();
+    
     foreach($items as $item)
     {
       $product=Product::findOrFail($item->product_id);
