@@ -6,11 +6,11 @@ class Role extends \Eloquent {
   	// Add your validation rules here
 	public static $rules = [
     'create' => [
-           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|Unique:roles|between:7,70',
+           'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|Unique:roles|between:5,70',
         ],
     
    'edit'   => [
-       'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:7,70',
+       'name' => 'required|regex:/^(([a-zA-Z]+)[\s]*)+$/|between:5,70',
         ],
     'destroy'   => [
 

@@ -9,11 +9,17 @@
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('name',$product->name,['class' => 'form-control']) }}
             {{ $errors->first('name') }}
+                        @if ($message = Session::get('name'))
+              {{ $message }}
+            @endif
           </div>
           <div class="form-group">
             {{ Form::label('code','Code: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('code',$product->code,['class' => 'form-control']) }}
             {{ $errors->first('code') }}
+                        @if ($message = Session::get('code'))
+              {{ $message }}
+            @endif
           </div>
           
           <div class="form-group">

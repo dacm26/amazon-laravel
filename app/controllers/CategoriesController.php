@@ -146,6 +146,23 @@ class CategoriesController extends \BaseController {
 		return Redirect::route('categories.index');
         }
     catch(Exception $e){
+      $categories = Category::where('id','!=',$id)->get();
+      $duplicate_name =false;
+      $duplicate_code =false;
+      foreach($categories as $temp){
+        if($temp->name == Input::get('name')){
+          $duplicate_name=true;
+        }
+        if($temp->code == Input::get('code')){
+          $duplicate_code=true;
+        }        
+      }
+      if($duplicate_name){
+        Session::flash('name', 'The name has already been taken.');
+      }
+      if($duplicate_code){
+        Session::flash('code', 'The code has already been taken.');
+      }
       return Redirect::back()->withErrors($validator)->withInput();
     }
 	}

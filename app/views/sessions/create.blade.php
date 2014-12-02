@@ -182,7 +182,9 @@
                   <div class="subtitle"> Admin Login </div>
                 </div>
               </div>
-
+            @if ($message = Session::get('error'))
+              {{ $message }}
+            @endif
              <div class="form-item">
                 <p class="formLabel">Email</p>
                 {{ Form::email('email',"",array('class' => 'form-style','id'=>'email','name'=>'email')) }}

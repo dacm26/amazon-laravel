@@ -105,6 +105,7 @@ class RolesController extends \BaseController {
 		return Redirect::route('roles.index');
     }
     catch(Exception $e){
+      Session::flash('duplicate', 'The name has already been taken.');
       return Redirect::back()->withErrors($validator)->withInput();
     }
 	}

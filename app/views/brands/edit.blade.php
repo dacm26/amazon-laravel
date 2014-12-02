@@ -11,6 +11,9 @@
           {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
           {{ Form::text('name', $brand->name,['class' => 'form-control']) }}
           {{ $errors->first('name') }}
+            @if ($message = Session::get('duplicate'))
+              {{ $message }}
+            @endif
         </div>
           
         

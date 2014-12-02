@@ -10,22 +10,15 @@ class SessionsController extends \BaseController {
   
   public function store(){
         Auth::employee()->attempt(Input::only('email','password'));
-        //Auth::customer()->attempt(Input::only('email','password'));
         if(Auth::employee()->check()){
           return Redirect::route('employees.index');
         }
-        /*else if(Auth::customer()->check()){
-          return 'hello customer';
-        }*/
+
         else{
+          Session::flash('error', 'Invalid email or password.');
           return Redirect::route('sessions.create');
         }
         
-    /*
-    if(Auth::attempt(Input::only('email','password'))){
-      return Redirect::route('employees.index');
-    }
-    return Redirect::route('sessions.create');*/
   }
   
   public function destroy(){

@@ -23,6 +23,7 @@ class CustomersSessionsController extends \BaseController {
         }
 
         else{
+          Session::flash('error', 'Invalid email or password.');
           return Redirect::route('customers_sessions.create');
         }
         

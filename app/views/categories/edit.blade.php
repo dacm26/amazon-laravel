@@ -9,6 +9,9 @@
             {{ Form::label('name','Name: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('name',$category->name,['class' => 'form-control']) }}
             {{ $errors->first('name') }}
+            @if ($message = Session::get('name'))
+              {{ $message }}
+            @endif            
           </div>
       
           <div class="form-group">
@@ -21,6 +24,9 @@
             {{ Form::label('code','Code: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('code',$category->code,['class' => 'form-control']) }}
             {{ $errors->first('code') }}
+            @if ($message = Session::get('code'))
+              {{ $message }}
+            @endif            
           </div>
           @if( ($category->tax_free) == 1)
               <div class="form-group">

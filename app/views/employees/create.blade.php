@@ -21,6 +21,9 @@
             {{ Form::label('birthday','Birthday: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::input('date', 'birthday', null, ['class' => 'form-control', 'placeholder' => 'Date']) }}
             {{ $errors->first('birthday') }}
+                                     @if ($message = Session::get('birthday'))
+              {{ $message }}
+            @endif
           </div>
       
            <div class="form-group">

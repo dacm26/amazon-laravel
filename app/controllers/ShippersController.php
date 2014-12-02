@@ -105,6 +105,23 @@ class ShippersController extends \BaseController {
 		return Redirect::route('shippers.index');
         }
     catch(Exception $e){
+      $shippers = Shipper::where('id','!=',$id)->get();
+      $duplicate_email =false;
+      $duplicate_mobile =false;
+      foreach($shippers as $temp){
+        if($temp->email == Input::get('email')){
+          $duplicate_email=true;
+        }
+        if($temp->mobile == Input::get('mobile')){
+          $duplicate_mobile=true;
+        }        
+      }
+      if($duplicate_email){
+        Session::flash('email', 'The email has already been taken.');
+      }
+      if($duplicate_mobile){
+        Session::flash('mobile', 'The mobile has already been taken.');
+      }
       return Redirect::back()->withErrors($validator)->withInput();
     }
 	}

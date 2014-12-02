@@ -14,12 +14,18 @@
             {{ Form::label('mobile','Mobile: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('mobile',$shipper->mobile,['class' => 'form-control']) }}
             {{ $errors->first('mobile') }}
+            @if ($message = Session::get('mobile'))
+              {{ $message }}
+            @endif
           </div>
           
           <div class="form-group">
             {{ Form::label('email','Email: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::email('email',$shipper->email,['class' => 'form-control']) }}
             {{ $errors->first('email') }}
+                        @if ($message = Session::get('email'))
+              {{ $message }}
+            @endif
           </div>
           <div class="form-group">
             {{ Form::label('percentage','Porcentage: ',['class' => 'exampleInputEmail1']) }}

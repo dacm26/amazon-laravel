@@ -51,6 +51,9 @@ class EmployeesController extends \BaseController {
     $today=$today->year;
     $result=$today-$birthday;
     if ( $validator->fails() or $result<18) { 
+                if($result < 18){
+            Session::flash('birthday', 'You need to have 18 years or more.');
+          }
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $employee = new Employee(Input::all());
@@ -110,6 +113,9 @@ class EmployeesController extends \BaseController {
     $today=$today->year;
     $result=$today-$birthday;
     if ( $validator->fails() or $result<18) { 
+          if($result < 18){
+            Session::flash('birthday', 'You need to have 18 years or more.');
+          }
         return Redirect::back()->withErrors($validator)->withInput();
     }
     $employee = Employee::findOrFail($id);
@@ -120,6 +126,31 @@ class EmployeesController extends \BaseController {
     
         }
     catch(Exception $e){
+       $employees = Employee::where('id','!=',$id)->get();
+          $birthday=new Carbon(Input::get('birthday'));
+    $today= Carbon::now();
+    $birthday=$birthday->year;
+    $today=$today->year;
+    $result=$today-$birthday;
+      $duplicate_email =false;
+      $duplicate_mobile =false;
+                if($result < 18){
+            Session::flash('birthday', 'You need to have 18 years or more.');
+          }
+      foreach($employees as $temp){
+        if($temp->email == Input::get('email')){
+          $duplicate_email=true;
+        }
+        if($temp->mobile == Input::get('mobile')){
+          $duplicate_mobile=true;
+        }        
+      }
+      if($duplicate_email){
+        Session::flash('email', 'The email has already been taken.');
+      }
+      if($duplicate_mobile){
+        Session::flash('mobile', 'The mobile has already been taken.');
+      }
       return Redirect::back()->withErrors($validator)->withInput();
     }
     /*

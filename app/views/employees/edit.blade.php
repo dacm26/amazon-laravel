@@ -16,6 +16,9 @@
             {{ Form::label('email','Email: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::email('email',$employee->email,['class' => 'form-control']) }}
             {{ $errors->first('email') }}
+                        @if ($message = Session::get('email'))
+              {{ $message }}
+            @endif
           </div>
 
 
@@ -24,12 +27,18 @@
             {{ Form::label('birthday','Birthday: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::input('date', 'birthday', $employee->birthday, ['class' => 'form-control', 'placeholder' => 'Date']) }}
             {{ $errors->first('birthday') }}
+                                     @if ($message = Session::get('birthday'))
+              {{ $message }}
+            @endif
           </div>
           
            <div class="form-group">
             {{ Form::label('mobile','Mobile: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::text('mobile',$employee->mobile,['class' => 'form-control']) }}
             {{ $errors->first('mobile') }}
+                         @if ($message = Session::get('mobile'))
+              {{ $message }}
+            @endif
           </div>
           
           @if( ($employee->gender) == 'F')
