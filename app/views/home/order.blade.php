@@ -60,6 +60,7 @@
         </div>
         <div class="span2" style="text-align:right;">
           <p id="items">${{ number_format($sub_total,2) }}</p>
+          {{ Form::hidden ('items_total',number_format($sub_total,2)) }}
         </div>
       </div>  
       <div class="row">
@@ -69,6 +70,7 @@
         <div class="span2" style="text-align:right;">
           <p id="shipping">${{ number_format($shipping,2) }}</p>
           {{ Form::hidden ('shipper',$shipper->id) }}
+          {{ Form::hidden ('shipping', number_format($shipping,2)) }}
         </div>
       </div>
       <div class="row">
@@ -87,6 +89,7 @@
         </div>
         <div class="span2" style="text-align:right;">
           <p id="totalBefore">${{ number_format($total,2) }}</p>
+          {{ Form::hidden ('sub_total',number_format($total,2)) }}
         </div>
       </div>
       <div class="row">
@@ -95,6 +98,7 @@
         </div>
         <div class="span2" style="text-align:right;">
           <p id="taxes">$ {{ number_format($tax,2) }}</p>
+           {{ Form::hidden ('tax',number_format($tax,2)) }}
         </div>
       </div>
       <HR width=95%>

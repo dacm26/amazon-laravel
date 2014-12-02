@@ -31,11 +31,12 @@
                                 <tbody>
                                     @foreach($details as $detail)
                                         <tr>
-                                          <td>{{ Product::findOrFail($detail->product_id)->code }}</td>
-                                          <td>{{ Product::findOrFail($detail->product_id)->name }}</td>
-                                          <td>{{ Product::findOrFail($detail->product_id)->price }}</td>
+                                           <?php  $product = Product::findOrFail($detail->product_id) ?>
+                                          <td>{{ $product->code }}</td>
+                                          <td>{{ $product->name }}</td>
+                                          <td>{{ $product->price }}</td>
                                           <td>{{ $detail->quantity }}</td>
-                                          <td>$ {{ Product::findOrFail($detail->product_id)->price*$detail->quantity  }}</td>
+                                          <td>$ {{ $product->price*$detail->quantity  }}</td>
                                         </tr>
                                      @endforeach
                                 </tbody>
