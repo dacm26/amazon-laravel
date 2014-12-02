@@ -43,14 +43,14 @@
                             </table>
                            </div>
                         </div>
-                        <h4 style="text-align:right">Sub total: <b>$ {{ number_format($sub_total,2) }}</b></h4>
-                        <h4 style="text-align:right">Shipping: <b>$ {{ number_format($shipping,2) }}</b></h4>
-                        <h4 style="text-align:right">Discounts: <b>$ {{ number_format($total_discount,2) }}</b></h4>
+                        <p style="text-align:right">Sub total: <b>$ {{ number_format($sub_total,2) }}</b></p>
+                        <p style="text-align:right">Shipping: <b>$ {{ number_format($shipping,2) }}</b></p>
+                        <p style="text-align:right">Discounts: <b>$ {{ number_format($total_discount,2) }}</b></p>
                         <HR width=95%>
-                        <h4 style="text-align:right">Total Before Taxes: <b>$ {{ number_format($total,2) }}</b></h4>
-                        <h4 style="text-align:right">Taxes: <b>$ {{ number_format($tax,2) }}</b></h4>
+                        <p style="text-align:right">Total Before Taxes: <b>$ {{ number_format($total,2) }}</b></p>
+                        <p style="text-align:right">Taxes: <b>$ {{ number_format($tax,2) }}</b></p>
                         <HR width=95%>
-                        <h2 style="text-align:right">Total Sales: <b>$ {{ number_format($total+$tax,2)  }}</b></h2>
+                        <h3 style="text-align:right">Total Sales: <b>$ {{ number_format($total+$tax,2)  }}</b></h3>
                           
                         <br>
                         <div style="text-align: center;">
