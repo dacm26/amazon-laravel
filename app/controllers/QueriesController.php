@@ -37,11 +37,40 @@ class QueriesController extends \BaseController {
 	{
     $order = Order::findOrFail($id);
     $details = OrderDetails::where('order_id','=',$id)->get();
-    $total=0;
+    $sub_total=0;
+    $discount=0;
+    $date=new Carbon($order->created_at);
+    $total_discount=0;
+    $tax_total=0;
+    $taxes = (Tax::all()->first());//multiplicar por el total
+    $tax = ($taxes->value)/100;
     foreach($details as $detail){
-      $total+=$detail->quantity*Product::findOrFail($detail->product_id)->price;
+      $product=Product::findOrFail($detail->product_id);
+      $sub_total+=$detail->quantity*$product->price;
+      
+      $brand=Brand::findOrFail($product->brand_id);
+      $category=Category::findOrFail($product->category_id);
+      $discounts=Discount::where('inactive','=','false')->where('category_id','=',$category->id)->where('brand_id','=',$brand->id)->get();
+      foreach($discounts as $disc){
+        $temp_date=new Carbon($disc->dateend);
+        $temp_date2=new Carbon($disc->datestart);
+          if($temp_date2<=$date and $date<=$temp_date){
+              $discount=$disc->discount;
+              break;
+          }
+      }
+      $discount=($discount/100)*$product->price*$detail->quantity;
+      $total_discount+=$discount;
+      if(!($category->tax_free)){//Si no está exenta de impuestos
+        $tax_total+=$product->price*$detail->quantity*$tax;
+      }      
     }
-    return View::make('queries.show',compact('order','details','total'));;
+    $shipping=Shipper::findOrFail($order->shipper_id)->percentage;
+    $shipping=$shipping/100;
+    $shipping=$shipping*$sub_total;
+    $total=$sub_total+$shipping-$total_discount;
+    $tax= $tax_total;
+    return View::make('queries.show',compact('order','details','sub_total','shipping','total_discount','tax','total'));
   }
 	public function sales_index()
 	{

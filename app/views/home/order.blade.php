@@ -77,6 +77,7 @@
         </div>
         <div class="span2" style="text-align:right;">
           <p id="discount">${{ number_format($total_discount,2) }}</p>
+          {{ Form::hidden ('discount',number_format($total_discount,2)) }}
         </div>
       </div>
       <HR width=95%>
