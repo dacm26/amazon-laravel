@@ -6,17 +6,19 @@ class Product extends \Eloquent {
 	public static $rules = [
      'create'   => [
         'name' => 'required|regex:/^(([\w]+)[\s]*)+$/|Unique:products|between:3,70',
-        'price' => 'required|regex:/^([0-9]{1,3}\.[0-9]{2})$/',
+        'price' => 'required|regex:/^([0-9]{1,9}\.[0-9]{2})$/',
         'code' => 'required|regex:/^([\w]+)$/|Unique:products|between:5,12',
         'units_in_stock' => 'required|regex:/^\+?[\d]+$/|between:2,10',
-        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10'
+        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10',
+        'image_url' => 'required'
         ],
 		 'edit'   => [
         'name' => 'required|regex:/^(([\w]+)[\s]*)+$/|between:3,70',
-        'price' => 'required|regex:/^([0-9]{1,3}\.[0-9]{2})$/',
+        'price' => 'required|regex:/^([0-9]{1,9}\.[0-9]{2})$/',
         'code' => 'required|regex:/^([\w]+)$/|between:5,12',
         'units_in_stock' => 'required|regex:/^\+?[\d]+$/|between:2,10',
-        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10'
+        'threshold' => 'required|regex:/^\+?[\d]+$/|between:1,10',
+        'image_url' => 'required'
         ],
     
     'destroy'   => [

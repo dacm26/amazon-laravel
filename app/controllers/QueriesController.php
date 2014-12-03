@@ -47,7 +47,7 @@ class QueriesController extends \BaseController {
     foreach($details as $detail){
       $product=Product::findOrFail($detail->product_id);
       $sub_total+=$detail->quantity*$product->price;
-      
+      $discount=0;
       $brand=Brand::findOrFail($product->brand_id);
       $category=Category::findOrFail($product->category_id);
       $discounts=Discount::where('inactive','=','false')->where('category_id','=',$category->id)->where('brand_id','=',$brand->id)->get();

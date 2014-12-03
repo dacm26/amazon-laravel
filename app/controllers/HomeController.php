@@ -210,6 +210,7 @@ class HomeController extends BaseController {
     $now=Carbon::now();
     foreach($items as $item)
     {
+      $discount=0;
       $product=Product::findOrFail($item->product_id);
       $brand=Brand::findOrFail($product->brand_id);
       $category=Category::findOrFail($product->category_id);

@@ -50,7 +50,7 @@
     <div class="span12 cnt-title">
       <h1>{{ $product->name}}</h1>
     </div>
-    <img src="{{ URL::asset('main/img/sony.JPG') }}" class="img-thumbnail"/>
+    <img src="{{ $product->image_url }}" class="img-thumbnail" height="500" width="340" />
     <div id="info" style="position: relative;left: 500px;top: -450px;background-color:#ececec;width:50%;border-radius:25px;padding: 10px 10px 10px 10px;">
       <h3>Brand: <b>{{ $brand->name}}</b></h3>
       <h3>Code: <b>{{ $product->code}}</b></h3>

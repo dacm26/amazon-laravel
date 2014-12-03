@@ -60,7 +60,7 @@
         @foreach($products as $product)
                     <div class="span6">
         <div class="media">
-         <a href="#" class="pull-left"><img src="{{ URL::asset('main/img/pic.png') }}" class="media-object" alt='' /></a>
+         <a href="#" class="pull-left"><img src="{{ $product->image_url }}" class="media-object" alt='' height="140" width="140" /></a>
          <div class="media-body">
           <h3 class="media-heading">
             <b>{{ $product->name}}</b>

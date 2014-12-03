@@ -13,7 +13,7 @@ class AddSuperUser extends Migration {
 	public function up()
 	{
     $role=Role::create([
-      'name' => 'super'
+      'name' => 'Super'
     ]);
     Employee::create([
       'name' => 'DCJJ User ',

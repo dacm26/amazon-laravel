@@ -40,7 +40,11 @@
             {{ $errors->first('threshold') }}
           </div>
       
-
+          <div class="form-group">
+            {{ Form::label('image_url','Image URL: ',['class' => 'exampleInputEmail1']) }}
+            {{ Form::text('image_url',$product->image_url,['class' => 'form-control']) }}
+            {{ $errors->first('image_url') }}
+          </div>
           <div class="form-group">
             {{ Form::label('brand_id','Brand: ',['class' => 'exampleInputEmail1']) }}
             {{ Form::select('brand_id', $brands,$product->brand_id) }}

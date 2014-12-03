@@ -46,6 +46,11 @@
   @endif
 </p>
 <p>
+  <strong>Image URL:</strong>
+  {{ $product->image_url }}
+</p>
+
+<p>
   <strong>Created At:</strong>
   {{ $product->created_at }}
 </p>

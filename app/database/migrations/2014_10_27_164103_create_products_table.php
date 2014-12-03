@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name')->unique();
 			$table->string('code')->unique();
-			$table->decimal('price', 5, 2);
+			$table->decimal('price', 11, 2);
 			$table->integer('units_in_stock');
 			$table->integer('threshold');
       $table->unsignedInteger('brand_id');
