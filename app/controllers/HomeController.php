@@ -259,6 +259,18 @@ class HomeController extends BaseController {
       }
     }
     if(($card->balance < Input::get('total')) or ($card->expiration_date <= $today) or ($card->inactive) or  ($no_units_in_stock) ){
+      if($no_units_in_stock){
+            Session::flash('no_units', 'No units in stock!');
+      }
+      if(($card->balance < Input::get('total'))){
+            Session::flash('balance', 'You do not have enough money available in your account');
+      }
+      if(($card->expiration_date <= $today)){
+            Session::flash('expiration', 'Your card have reached the expiration date!');
+      }
+      if(($card->inactive)){
+            Session::flash('inactive', 'Your card is inactive!');
+      }      
       return Redirect::to('cart');
     }
     $order= Order::create([
@@ -292,7 +304,7 @@ class HomeController extends BaseController {
     /*Mailer
     */
     Cart::where('customer_id','=',Auth::customer()->user()->id)->delete();
-    
+    Session::flash('success', 'We have sent an email confirmation for your purchase, Thanks a lot!');
     return Redirect::to('cart');
   }
 

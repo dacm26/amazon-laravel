@@ -50,6 +50,9 @@
     <div class="row">
       <div class="span12 cnt-title">
         <h1>My Shopping Cart</h1>
+                                  @if ($message = Session::get('success'))
+                          {{ $message }}<br>
+                        @endif
       </div>
     </div>
     <br><br>
@@ -57,6 +60,7 @@
   
       
 <div class="row">
+
         @foreach($products as $product)
                     <div class="span6">
         <div class="media">
@@ -79,13 +83,27 @@
   
         @endforeach
 
- 
+
       
+  
   
     <div class="row">
       <div class="span12 cnt-title">
         <h2>Total Sale: <b>$ {{ $total }}</b></h2>
         {{ Form::open(array('route' => array('home.add_card'),'class'=>'navbar-form navbar-left', 'method' => 'get')) }}
+                                   @if ($message = Session::get('no_units'))
+                          {{ $message }}<br>
+                        @endif
+                        @if ($message = Session::get('balance'))
+                          {{ $message }}<br>
+                        @endif
+                        @if ($message = Session::get('expiration'))
+                          {{ $message }}<br>
+                        @endif
+                        @if ($message = Session::get('inactive'))
+                          {{ $message }}<br>
+                        @endif
+
                         {{ Form::submit('Buy Now',['class' => 'btn btn-success']) }}
         {{ Form::close() }}
       </div>
