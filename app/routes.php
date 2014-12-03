@@ -82,6 +82,10 @@ Route::group(array('before'=>'read-only'), function() {
   Route::post('/shippers/search','ShippersController@search');
   Route::post('/products/search','ProductsController@search');
 
+
+});
+
+Route::group(array('before'=>'contador'), function() { 
   Route::get('orders', array('as' => 'orders.index', 'uses' => 'QueriesController@orders_index'));
   Route::get('orders/{orders}', array('as' => 'orders.show', 'uses' => 'QueriesController@orders_show'));
   Route::get('sales', array('as' => 'sales.index', 'uses' => 'QueriesController@sales_index'));
@@ -89,10 +93,20 @@ Route::group(array('before'=>'read-only'), function() {
   Route::post('/orders/search','QueriesController@orders_search');
   Route::post('/sales/search','QueriesController@sales_search');
   Route::post('/pro_cat/search','QueriesController@pro_cat_search');
+  
 });
 
 Route::group(array('before'=>'gerente'), function() { 
   Route::get('/trending/products',array('as' => 'products.trending', 'uses' => 'ProductsController@trending'));
+  
+});
+
+Route::group(array('before'=>'administrador'), function() { 
+  Route::get('customers/{customers}/edit', array('as' => 'customers.edit', 'uses' => 'CustomersController@edit'));
+  Route::put('customers/{customers}', array('as' => 'customers.update', 'uses' => 'CustomersController@update'));
+  Route::patch('customers/{customers}', array('as' => 'customers.update', 'uses' => 'CustomersController@update'));
+  Route::delete('customers/{customers}', array('as' => 'customers.destroy', 'uses' => 'CustomersController@destroy'));
+  
 });
 
 

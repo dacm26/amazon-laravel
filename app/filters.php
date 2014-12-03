@@ -58,6 +58,23 @@ Route::filter('read-only', function()
     }
 });
 
+Route::filter('contador', function()
+{ 
+   if (Auth::employee()->guest()){
+        return Redirect::guest('login');
+    }
+    if ( Auth::employee()->user()->role_id == 1 ) {
+     
+      
+   }
+  else if ( Auth::employee()->user()->role_id == 3 or Auth::employee()->user()->role_id == 2) {
+     // do something
+     
+   }else{
+    return Redirect::to('employees'); 
+  }
+});
+
 Route::filter('gerente', function()
 { 
   if (Auth::employee()->guest()){
