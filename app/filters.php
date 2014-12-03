@@ -39,7 +39,53 @@ Route::filter('auth.employee', function(){
         return Redirect::guest('login');
     }
 });
+Route::filter('super', function()
+{ 
+  if (Auth::employee()->guest()){
+        return Redirect::guest('login');
+    }
+  if ( Auth::employee()->user()->role_id != 1) {
+     // do something
+     return Redirect::to('employees'); 
+   }
+});
 
+
+Route::filter('read-only', function()
+{ 
+   if (Auth::employee()->guest()){
+        return Redirect::guest('login');
+    }
+});
+
+Route::filter('gerente', function()
+{ 
+  if (Auth::employee()->guest()){
+        return Redirect::guest('login');
+    }
+  if ( Auth::employee()->user()->role_id == 1 ) {
+     
+      
+   }
+  else if ( Auth::employee()->user()->role_id != 3) {
+     // do something
+     return Redirect::to('employees'); 
+   }
+});
+Route::filter('administrador', function()
+{ 
+      if (Auth::employee()->guest()){
+        return Redirect::guest('login');
+    }
+  if ( Auth::employee()->user()->role_id == 1) {
+     
+      
+   }
+  else if ( Auth::employee()->user()->role_id != 4) {
+     // do something
+     return Redirect::to('employees'); 
+   }
+}); 
 
 Route::filter('auth.customer', function(){
    if (Auth::customer()->guest()){
