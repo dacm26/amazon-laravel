@@ -39,7 +39,7 @@ class DiscountsController extends \BaseController {
     $validator = Validator::make($data = Input::all(), Discount::$rules['create']);
     $start=new Carbon(Input::get('datestart'));
     $end=new Carbon(Input::get('dateend'));
-    $today= Carbon::now();
+    $today= Carbon::today();
     
     if ($validator->fails() or ($start > $end) or ($start < $today))
 		{

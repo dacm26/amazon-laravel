@@ -107,6 +107,58 @@ Route::group(array('before'=>'administrador'), function() {
   Route::patch('customers/{customers}', array('as' => 'customers.update', 'uses' => 'CustomersController@update'));
   Route::delete('customers/{customers}', array('as' => 'customers.destroy', 'uses' => 'CustomersController@destroy'));
   
+  Route::get('roles/create', array('as' => 'roles.create', 'uses' => 'RolesController@create'));
+  Route::post('roles', array('as' => 'roles.store', 'uses' => 'RolesController@store'));
+  Route::get('roles/{roles}/edit', array('as' => 'roles.edit', 'uses' => 'RolesController@edit'));
+  Route::put('roles/{roles}', array('as' => 'roles.update', 'uses' => 'RolesController@update'));
+  Route::patch('roles/{roles}', array('as' => 'roles.update', 'uses' => 'RolesController@update'));
+  Route::delete('roles/{roles}', array('as' => 'roles.destroy', 'uses' => 'RolesController@destroy'));
+
+  Route::get('employees/create', array('as' => 'employees.create', 'uses' => 'EmployeesController@create'));
+  Route::post('employees', array('as' => 'employees.store', 'uses' => 'EmployeesController@store'));
+  Route::get('employees/{employees}/edit', array('as' => 'employees.edit', 'uses' => 'EmployeesController@edit'));
+  Route::put('employees/{employees}', array('as' => 'employees.update', 'uses' => 'EmployeesController@update'));
+  Route::patch('employees/{employees}', array('as' => 'employees.update', 'uses' => 'EmployeesController@update'));
+  Route::delete('employees/{employees}', array('as' => 'employees.destroy', 'uses' => 'EmployeesController@destroy'));
+  
+  Route::get('brands/create', array('as' => 'brands.create', 'uses' => 'BrandsController@create'));
+  Route::post('brands', array('as' => 'brands.store', 'uses' => 'BrandsController@store'));
+  Route::get('brands/{brands}/edit', array('as' => 'brands.edit', 'uses' => 'BrandsController@edit'));
+  Route::put('brands/{brands}', array('as' => 'brands.update', 'uses' => 'BrandsController@update'));
+  Route::patch('brands/{brands}', array('as' => 'brands.update', 'uses' => 'BrandsController@update'));
+  Route::delete('brands/{brands}', array('as' => 'brands.destroy', 'uses' => 'BrandsController@destroy'));
+
+  Route::get('categories/create', array('as' => 'categories.create', 'uses' => 'CategoriesController@create'));
+  Route::post('categories', array('as' => 'categories.store', 'uses' => 'CategoriesController@store'));
+  Route::get('categories/{categories}/edit', array('as' => 'categories.edit', 'uses' => 'CategoriesController@edit'));
+  Route::put('categories/{categories}', array('as' => 'categories.update', 'uses' => 'CategoriesController@update'));
+  Route::patch('categories/{categories}', array('as' => 'categories.update', 'uses' => 'CategoriesController@update'));
+  Route::delete('categories/{categories}', array('as' => 'categories.destroy', 'uses' => 'CategoriesController@destroy'));
+  
+  Route::get('shippers/create', array('as' => 'shippers.create', 'uses' => 'ShippersController@create'));
+  Route::post('shippers', array('as' => 'shippers.store', 'uses' => 'ShippersController@store'));
+  Route::get('shippers/{shippers}/edit', array('as' => 'shippers.edit', 'uses' => 'ShippersController@edit'));
+  Route::put('shippers/{shippers}', array('as' => 'shippers.update', 'uses' => 'ShippersController@update'));
+  Route::patch('shippers/{shippers}', array('as' => 'shippers.update', 'uses' => 'ShippersController@update'));
+  Route::delete('shippers/{shippers}', array('as' => 'shippers.destroy', 'uses' => 'ShippersController@destroy'));
+  
+  Route::get('discounts/create', array('as' => 'discounts.create', 'uses' => 'DiscountsController@create'));
+  Route::post('discounts', array('as' => 'discounts.store', 'uses' => 'DiscountsController@store'));
+  Route::get('discounts/{discounts}/edit', array('as' => 'discounts.edit', 'uses' => 'DiscountsController@edit'));
+  Route::put('discounts/{discounts}', array('as' => 'discounts.update', 'uses' => 'DiscountsController@update'));
+  Route::patch('discounts/{discounts}', array('as' => 'discounts.update', 'uses' => 'DiscountsController@update'));
+  Route::delete('discounts/{discounts}', array('as' => 'discounts.destroy', 'uses' => 'DiscountsController@destroy'));
+  
+  Route::get('taxes/{taxes}/edit', array('as' => 'taxes.edit', 'uses' => 'TaxesController@edit'));
+  Route::put('taxes/{taxes}', array('as' => 'taxes.update', 'uses' => 'TaxesController@update'));
+  Route::patch('taxes/{taxes}', array('as' => 'taxes.update', 'uses' => 'TaxesController@update'));
+  
+  Route::get('products/create', array('as' => 'products.create', 'uses' => 'ProductsController@create'));
+  Route::post('products', array('as' => 'products.store', 'uses' => 'ProductsController@store'));
+  Route::get('products/{products}/edit', array('as' => 'products.edit', 'uses' => 'ProductsController@edit'));
+  Route::put('products/{products}', array('as' => 'products.update', 'uses' => 'ProductsController@update'));
+  Route::patch('products/{products}', array('as' => 'products.update', 'uses' => 'ProductsController@update'));
+  Route::delete('products/{products}', array('as' => 'products.destroy', 'uses' => 'ProductsController@destroy'));  
 });
 
 
