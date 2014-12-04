@@ -301,7 +301,7 @@ class HomeController extends BaseController {
     $usermailer = Customer::find($customer->id);
     $details=OrderDetails::where('order_id','=',$order->id)->get();
 
-    $this->mailer->welcome($usermailer,Input::get('items_total'),$details,Input::get('shipping'),Input::get('discounts'),Input::get('sub_total'),Input::get('tax'),Input::get('total'));
+    $this->mailer->welcome($usermailer,Input::get('items_total'),$details,Input::get('shipping'),Input::get('discount'),Input::get('sub_total'),Input::get('tax'),Input::get('total'));
     /*Mailer
     */
     Cart::where('customer_id','=',Auth::customer()->user()->id)->delete();
