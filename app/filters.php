@@ -46,7 +46,7 @@ Route::filter('super', function()
     }
   if ( Auth::employee()->user()->role_id != 1) {
      // do something
-     return Redirect::to('employees'); 
+     return Redirect::to('error'); 
    }
 });
 
@@ -71,7 +71,7 @@ Route::filter('contador', function()
      // do something
      
    }else{
-    return Redirect::to('employees'); 
+    return Redirect::to('error'); 
   }
 });
 
@@ -86,7 +86,7 @@ Route::filter('gerente', function()
    }
   else if ( Auth::employee()->user()->role_id != 3) {
      // do something
-     return Redirect::to('employees'); 
+     return Redirect::to('error'); 
    }
 });
 Route::filter('administrador', function()
@@ -100,7 +100,7 @@ Route::filter('administrador', function()
    }
   else if ( Auth::employee()->user()->role_id != 4) {
      // do something
-     return Redirect::to('employees'); 
+     return Redirect::to('error'); 
    }
 }); 
 

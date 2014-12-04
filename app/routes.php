@@ -72,7 +72,7 @@ Route::group(array('before'=>'read-only'), function() {
   
   Route::get('taxes', array('as' => 'taxes.index', 'uses' => 'TaxesController@show'));
   Route::get('taxes/{taxes}', array('as' => 'taxes.show', 'uses' => 'TaxesController@show'));
-  
+  Route::get('error', 'EmployeesController@error');
   Route::get('logout', 'SessionsController@destroy');
   Route::post('/roles/search','RolesController@search');
   Route::post('/brands/search','BrandsController@search');

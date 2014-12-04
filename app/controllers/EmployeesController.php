@@ -13,6 +13,14 @@ class EmployeesController extends \BaseController {
 		$employees = Employee::where('inactive', '=', 0)->get();
 		return View::make('employees.index', compact('employees','roles'));
 	}
+
+	public function error()
+	{
+    $roles = Role::where('inactive','=','false')->get()->lists('name','id');
+		$employees = Employee::where('inactive', '=', 0)->get();
+		return View::make('employees.error', compact('employees','roles'));
+	}  
+  
   public function search()
 	{
     $keyword = Input::get('keyword');
